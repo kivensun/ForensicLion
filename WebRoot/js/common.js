@@ -144,7 +144,7 @@ function fillcombobox(id, text) {
 		success : function(now) {
 			var str = '[';
 			$.each(now, function(i) {
-				if (now[i].id == '') {
+				if (now[0] == '') {
 					return false;
 				}
 				str += '{';
