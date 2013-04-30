@@ -78,11 +78,11 @@ function clearIput() {
  * @param callBack
  *            上传成功之后的回调
  */
-function Uploader(chunk,url,type,datagrid, callBack) {
+function Uploader(chunk, url, type, datagrid, callBack) {
 	var addWin = $('<div style="overflow: hidden;"/>');
 	var upladoer = $('<iframe/>');
 	upladoer.attr({
-		'src' : 'uploader?url='+ url +'&type='+type,
+		'src' : 'uploader?url=' + url + '&type=' + type,
 		width : '100%',
 		height : '100%',
 		frameborder : '0',
@@ -102,7 +102,7 @@ function Uploader(chunk,url,type,datagrid, callBack) {
 			var fw = GetFrameWindow(upladoer[0]);
 			var files = fw.files;
 			$(this).window('destroy');
-			window.parent.$('#'+ datagrid ).datagrid('reload');
+			window.parent.$('#' + datagrid).datagrid('reload');
 			callBack.call(this, files);
 		},
 		onOpen : function() {
@@ -126,11 +126,49 @@ function GetFrameWindow(frame) {
 			&& frame.contentWindow;
 }
 
-function makerUpload(chunk,url,type,datagrid) {
-	Uploader(chunk,url,type,datagrid, function(files) {
+function makerUpload(chunk, url, type, datagrid) {
+	Uploader(chunk, url, type, datagrid, function(files) {
 		if (files && files.length > 0) {
 			$("#res").text("成功上传：" + files.join(","));
 		}
 	});
 }
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function fillcombobox(id, text) {
+	var json = '{\"name\":\"' + text + '\" }';
+	$.ajax({
+		url : "json/listdictionarys",
+		type : 'post',
+		data : '{\"param\":' + json + '}',
+		dataType : 'json',
+		success : function(now) {
+			var str = '[';
+			$.each(now, function(i) {
+				if (now[i].id == '') {
+					return false;
+				}
+				str += '{';
+				str += '\"id\":\"' + now[i].code + '\",';
+				str += '\"text\":\"' + now[i].code + '  ' + now[i].text +'\"';
+
+				if (i == now.length-1) {
+					str += '}';
+				} else {
+					str += '},';
+				}
+			});
+			str += ']';
+			var data = jQuery.parseJSON(str);
+			$('#' + id).combobox({
+				data : data,
+				valueField : 'id',
+				textField : 'text'
+			});
+
+		},
+		error : function(xhr) {
+			alert('出错。。\n' + xhr.responseText);
+		},// ////
+		contentType : "application/json; charset=utf-8"
+	});
+}
