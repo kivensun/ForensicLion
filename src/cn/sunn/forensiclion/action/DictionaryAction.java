@@ -58,7 +58,12 @@ public class DictionaryAction extends DictionaryBaseAction {
 		    String name = param.get("name").toString();
 		    System.out.println("Print Dictionary Where Parent is " + name);
 		    Dictionary dict = dictmgr.findDictionaryByName(name);
-		    out.println(dictmgr.getDictionaryTree(dict.getId()));
+		    if (dict == null){
+		    	out.println("[]");
+		    }else{
+		    	 out.println(dictmgr.getDictionaryTree(dict.getId()));
+		    }
+		   
 		}
 		out.flush();
 		out.close();
