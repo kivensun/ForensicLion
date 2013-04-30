@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-2 9:39:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.sunn.forensiclion.domain.MFile" table="file" catalog="ForensicLion">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="class_" type="string">
+            <column name="class" length="360">
+                <comment>&#206;&#196;&#188;&#254;&#185;&#233;&#192;&#224;</comment>
+            </column>
+        </property>
+        <property name="filename" type="string">
+            <column name="filename" length="360">
+                <comment>&#206;&#196;&#188;&#254;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="data" type="binary">
+            <column name="data">
+                <comment>&#202;&#253;&#190;&#221;</comment>
+            </column>
+        </property>
+        <property name="datetime" type="timestamp">
+            <column name="datetime" length="19">
+                <comment>&#201;&#207;&#180;&#171;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

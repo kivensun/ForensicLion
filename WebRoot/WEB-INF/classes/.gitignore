@@ -1,0 +1,6 @@
+/applicationContext.xml
+/cn
+/daoContext.xml
+/ehcache.xml
+/hibernate.cfg.xml
+/struts.xml

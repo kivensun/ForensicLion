@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>上传</title>
+<title>文件上传</title>
+<link rel="stylesheet"
+	href="js/plupload/queue/css/jquery.plupload.queue.css" type="text/css"></link>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/plupload/plupload.js"></script>
+<script type="text/javascript" src="js/plupload/plupload.html4.js"></script>
+<script type="text/javascript" src="js/plupload/plupload.html5.js"></script>
+<script type="text/javascript" src="js/plupload/plupload.flash.js"></script>
+<script type="text/javascript" src="js/plupload/zh_CN.js"></script>
+<script type="text/javascript"
+	src="js/plupload/queue/jquery.plupload.queue.js"></script>
+</head>
+<body style="padding: 0; margin: 0;">
+	<div id="uploader">&nbsp;</div>
+	<script type="text/javascript">
+		var files = [];
+		var errors = [];
+		var type = 'file';
+		var url = $.getUrlParam('url');
+		var type = $.getUrlParam('type');
+		var max_file_size = '12mb';
+		var doc_filters = {
+			title : "文档",
+			extensions : "doc,docx"
+		};
+		var img_filters = {
+			title : "图片文件",
+			extensions : "png,jpg,jpeg,gif,bmp"
+
+		};
+
+		$(function() {
+			var filters = {};
+			if (type == "doc") {
+				filters = {
+					title : "文档",
+					extensions : "zip,doc,docx,xls,xlsx,ppt,pptx"
+				};
+			} else if (type == "img") {
+				filters = {
+					title : "图片文件",
+					extensions : "png,jpg,jpeg,gif,bmp"
+
+				};
+			}
+			$("#uploader").pluploadQueue(
+					$.extend({
+						runtimes : 'flash,html4,html5',
+						url : url,
+						max_file_size : max_file_size,
+						chunk_size : '2mb',
+						file_data_name : 'file',
+						
+						filters : [ filters ],
+						flash_swf_url : 'js/plupload/plupload.flash.swf',
+						init : {
+							FileUploaded : function(uploader, file, response) {
+								if (response.response) {
+									var rs = $.parseJSON(response.response);
+									if (rs.status) {
+										files.push(file.name);
+									} else {
+										errors.push(file.name);
+									}
+								}
+							},
+							UploadComplete : function(uploader, fs) {
+								var e = errors.length ? ",失败" + errors.length
+										+ "个(" + errors.join("、") + ")。" : "。";
+								alert("上传完成！共" + fs.length + "个。成功"
+										+ files.length + e);
+								target.window("close");
+							}
+						}
+					}));
+		});
+	</script>
+</body>
+
+</html>

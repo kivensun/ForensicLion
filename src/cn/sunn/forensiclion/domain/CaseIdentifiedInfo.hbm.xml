@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-2-8 23:09:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.sunn.forensiclion.domain.CaseIdentifiedInfo" table="case_identified_info" catalog="ForensicLion">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="caseId" type="string">
+            <column name="case_id" length="10">
+                <comment>&#176;&#184;&#188;&#254;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="30">
+                <comment>&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="sex" type="string">
+            <column name="sex" length="100">
+                <comment>&#208;&#212;&#177;&#240;</comment>
+            </column>
+        </property>
+        <property name="idcard" type="string">
+            <column name="idcard" length="20">
+                <comment>&#214;&#164;&#188;&#254;&#186;&#197;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="education" type="string">
+            <column name="education" length="100">
+                <comment>&#206;&#196;&#187;&#175;&#179;&#204;&#182;&#200;</comment>
+            </column>
+        </property>
+        <property name="nation" type="string">
+            <column name="nation" length="100">
+                <comment>&#195;&#241;&#215;&#229;</comment>
+            </column>
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="100">
+                <comment>&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="100">
+                <comment>&#177;&#184;&#215;&#162;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-2-8 23:09:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.sunn.forensiclion.domain.CaseInternalStatistics" table="case_internal_statistics" catalog="ForensicLion">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="caseId" type="string">
+            <column name="case_id" length="10">
+                <comment>&#176;&#184;&#188;&#254;&#177;&#224;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="payee" type="string">
+            <column name="payee" length="100">
+                <comment>&#202;&#213;&#191;&#238;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="identifyAssistant" type="string">
+            <column name="identify_assistant" length="100">
+                <comment>&#188;&#248;&#182;&#168;&#214;&#250;&#192;&#237;</comment>
+            </column>
+        </property>
+        <property name="appraiser1" type="string">
+            <column name="appraiser1" length="100">
+                <comment>&#188;&#248;&#182;&#168;&#200;&#203;&#210;&#187;</comment>
+            </column>
+        </property>
+        <property name="appraiser2" type="string">
+            <column name="appraiser2" length="100">
+                <comment>&#188;&#248;&#182;&#168;&#200;&#203;&#182;&#254;</comment>
+            </column>
+        </property>
+        <property name="signer" type="string">
+            <column name="signer" length="100">
+                <comment>&#199;&#169;&#183;&#162;&#200;&#203;</comment>
+            </column>
+        </property>
+        <property name="sources" type="string">
+            <column name="sources" length="400">
+                <comment>&#192;&#180;&#212;&#180;&#199;&#254;&#181;&#192;</comment>
+            </column>
+        </property>
+        <property name="operationMaintain" type="string">
+            <column name="operation_maintain" length="400">
+                <comment>&#210;&#181;&#206;&#241;&#206;&#172;&#187;&#164;</comment>
+            </column>
+        </property>
+        <property name="vip" type="string">
+            <column name="vip" length="400">
+                <comment>VIP&#191;&#205;&#187;&#167;</comment>
+            </column>
+        </property>
+        <property name="operationsOwner" type="string">
+            <column name="operations_owner" length="400">
+                <comment>&#210;&#181;&#206;&#241;&#185;&#233;&#191;&#218;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="1200">
+                <comment>&#177;&#184;&#215;&#162;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

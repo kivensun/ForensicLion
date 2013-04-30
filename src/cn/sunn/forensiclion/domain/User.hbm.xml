@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-2-8 9:09:16 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.sunn.forensiclion.domain.User" table="user" catalog="ForensicLion">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="loginname" type="string">
+            <column name="loginname" length="10" >
+                <comment>&#181;&#199;&#194;&#188;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="passwd" type="string">
+            <column name="passwd" length="20">
+                <comment>&#195;&#220;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="30" >
+                <comment>&#208;&#213;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="major" type="string">
+            <column name="major" length="60" >
+                <comment>&#215;&#168;&#210;&#181;</comment>
+            </column>
+        </property>
+        <property name="jobtitle" type="string">
+            <column name="jobtitle" length="60" >
+                <comment>&#214;&#176;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="practiceNum" type="string">
+            <column name="practice_num" length="30">
+                <comment>&#214;&#180;&#210;&#181;&#214;&#164;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" length="300">
+                <comment>&#177;&#184;&#215;&#162;</comment>
+            </column>
+        </property>
+        <property name="registdate" type="timestamp">
+            <column name="registdate" length="19" >
+                <comment>&#215;&#162;&#178;&#225;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="logindate" type="timestamp">
+            <column name="logindate" length="19">
+                <comment>&#201;&#207;&#180;&#206;&#181;&#199;&#194;&#188;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="status" type="int">
+            <column name="status" >
+                <comment>&#215;&#180;&#204;&#172; 1&#206;&#170;&#211;&#208;&#208;&#167; 0 &#206;&#170;&#203;&#248;&#182;&#168;</comment>
+            </column>
+        </property>
+        <set name="myfuns"  cascade="none" table="user_function" lazy="false">
+            <key column="user_id"></key>
+            <many-to-many class="cn.sunn.forensiclion.domain.Dictionary"
+                column="function_id"></many-to-many>
+        </set> 
+    </class>
+</hibernate-mapping>

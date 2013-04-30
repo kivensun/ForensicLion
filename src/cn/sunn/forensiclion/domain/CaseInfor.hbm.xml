@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-2-8 23:09:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class catalog="ForensicLion" name="cn.sunn.forensiclion.domain.CaseInfor"
+		table="case_infor">
+		<id name="caseId" type="string">
+			<column length="10" name="case_id" />
+			<generator class="assigned" />
+		</id>
+		<property generated="never" lazy="false" name="identifyMajor"
+			type="string">
+			<column length="60" name="identify_major">
+				<comment>¼ø¶¨×¨Òµ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="entrustDate"
+			type="date">
+			<column length="10" name="entrust_date">
+				<comment>Î¯ÍÐÈÕÆÚ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="identifyRequest"
+			type="string">
+			<column length="300" name="identify_request">
+				<comment>¼ø¶¨ÒªÇó</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="entrusterAddress"
+			type="string">
+			<column length="300" name="entruster_address">
+				<comment>ÁªÏµµØÖ·</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="reportGetway"
+			type="string">
+			<column length="30" name="report_getway">
+				<comment>ÎÄÊéÁìÈ¡</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="receiverName"
+			type="string">
+			<column length="20" name="receiver_name">
+				<comment>ÊÕ¼þÈË</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="receiverAddress"
+			type="string">
+			<column length="300" name="receiver_address">
+				<comment>ÓÊ¼ÄµØÖ·</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="receiverCode"
+			type="string">
+			<column length="10" name="receiver_code">
+				<comment>ÓÊ¼ÄÓÊ±à</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="receiverEmail"
+			type="string">
+			<column length="50" name="receiver_email">
+				<comment>µç×ÓÓÊÏä</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="entruster"
+			type="string">
+			<column length="100" name="entruster">
+				<comment>Î¯ÍÐ·½</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="entrusterRelation"
+			type="string">
+			<column length="100" name="entruster_relation">
+				<comment>Óë±¾°¸¹ØÏµ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="entrusterNum"
+			type="string">
+			<column length="30" name="entruster_num">
+				<comment>Î¯ÍÐ×ÚºÅ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="linkman" type="string">
+			<column length="30" name="linkman">
+				<comment>Áª Ïµ ÈË</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="linkmanTel"
+			type="string">
+			<column length="30" name="linkman_tel">
+				<comment>ÁªÏµµç»°</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="linkmanFax"
+			type="string">
+			<column length="30" name="linkman_fax">
+				<comment>´«ÕæºÅÂë</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="identifySender"
+			type="string">
+			<column length="30" name="identify_sender">
+				<comment>ËÍ ¼ì ÈË</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="insuranceUnit"
+			type="string">
+			<column length="100" name="insurance_unit">
+				<comment>±£ÏÕµ¥Î»</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="insuranceLinkman"
+			type="string">
+			<column length="30" name="insurance_linkman">
+				<comment>±£ÏÕµ¥Î»ÁªÏµÈË</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="insuranceTel"
+			type="string">
+			<column length="30" name="insurance_tel">
+				<comment>±£ÏÕµ¥Î»ÁªÏµµç»°1</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="insuranceEmail"
+			type="string">
+			<column length="50" name="insurance_email">
+				<comment>±£ÏÕµ¥Î»µç×ÓÓÊ¼þ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="caseDate"
+			type="date">
+			<column length="10" name="case_date">
+				<comment>°¸·¢ÈÕÆÚ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="caseClass"
+			type="string">
+			<column length="100" name="case_class">
+				<comment>°¸¼þÀà±ð</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="caseIdentifyTimes"
+			type="java.lang.Integer">
+			<column name="case_identify_times">
+				<comment>¼ø¶¨´ÎÊý</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="caseProgress"
+			type="string">
+			<column length="100" name="case_progress">
+				<comment>°¸¼þ½×¶Î</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="caseRemark"
+			type="string">
+			<column length="3000" name="case_remark">
+				<comment>¼ò°¸ÕªÒª</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="status" type="string">
+			<column length="100" name="status">
+				<comment>¼ò°¸ÕªÒª</comment>
+			</column>
+		</property>
+		<set name="casecharges" inverse="true" cascade="all">
+			<key column="caseId"></key>
+			<one-to-many class="cn.sunn.forensiclion.domain.CaseCharge" />
+		</set>
+		<set name="caseidentifiedinfos" inverse="true" cascade="all">
+			<key column="caseId"></key>
+			<one-to-many class="cn.sunn.forensiclion.domain.CaseIdentifiedInfo" />
+		</set>
+		<set name="casecheckinfors" inverse="true" cascade="all">
+			<key column="caseId"></key>
+			<one-to-many class="cn.sunn.forensiclion.domain.CaseCheckInfor" />
+		</set>
+		<set name="mfiles"  cascade="none" table="case_file" lazy="false">
+            <key column="case_id"></key>
+            <many-to-many class="cn.sunn.forensiclion.domain.MFile"
+                column="file_id"></many-to-many>
+        </set> 
+		<one-to-one class="cn.sunn.forensiclion.domain.CaseInternalStatistics"
+			name="caseinternalstatistics" />
+	</class>
+</hibernate-mapping>
