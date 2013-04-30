@@ -123,10 +123,30 @@ fieldset {
 	font-size: 9pt;
 }
 </style>
-
+<script type="text/javascript">
+	function filldata() {
+		fillcombobox('identifyMajor', '鉴定专业');
+		fillcombobox('reportGetway', '文书领取');
+		fillcombobox('entrusterRelation', '与本案关系');
+		fillcombobox('insuranceUnit', '保险单位');
+		fillcombobox('payee', '收款人');
+		fillcombobox('identifyAssistant', '鉴定助理');
+		fillcombobox('appraiser1', '鉴定人一');
+		fillcombobox('appraiser2', '鉴定专业');
+		fillcombobox('signer', '签发人');
+		fillcombobox('sources', '来源渠道');
+		fillcombobox('operationMaintain', '业务维护');
+		fillcombobox('vip', 'VIP客户');
+		fillcombobox('operationsOwner','业务归口');		
+	}
+	$(function() {
+		filldata();
+	});
+</script>
 </head>
 
 <body>
+
 	<div id="p" class="easyui-panel" title="案件受理"
 		style="width:95%;height:100%;padding:10px;background:#fafafa;"
 		data-options="fit:true,border:false">
@@ -300,8 +320,8 @@ fieldset {
 
 									<th>鉴定次数</th>
 									<td style="width: 134px;"><input id="caseIdentifyTimes"
-										name="CaseInfor.caseIdentifyTimes" class="easyui-validatebox"
-										data-options="required:true,validType:'length[0,2]'" />
+										name="CaseInfor.caseIdentifyTimes" class="easyui-numberbox"
+										value="0" data-options="min:0" />
 									</td>
 
 									<th>案件阶段</th>
@@ -350,9 +370,8 @@ fieldset {
 										name="CaseCharge.chargeStandardType"
 										data-options="required:true,validType:'length[0,10]'" />
 									</td>
-									<td><input id="chargeAmount" class="easyui-validatebox"
-										name="CaseCharge.chargeAmount"
-										data-options="required:true,validType:'length[0,10]'" />
+									<td><input id="chargeAmount" class="easyui-numberbox"
+										name="CaseCharge.chargeAmount" value="0" data-options="min:0" />
 									</td>
 									<td><input id="chargeRemark" class="easyui-validatebox"
 										name="CaseCharge.chargeRemark"
@@ -386,31 +405,31 @@ fieldset {
 								</tr>
 								<tr style="text-align: center;" id="rowmember">
 									<td id="rownum">1</td>
-									<td><input class="easyui-validatebox"
+									<td><input id="name" class="easyui-validatebox"
 										name="CaseIdentifiedInfo.name"
 										data-options="required:true,validType:'length[0,50]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="sex" class="easyui-validatebox"
 										name="CaseIdentifiedInfo.sex"
 										data-options="required:true,validType:'length[0,5]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="idcard" " class="easyui-validatebox"
 										name="CaseIdentifiedInfo.idcard"
 										data-options="validType:'length[0,18]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="educatio" class="easyui-validatebox"
 										name="CaseIdentifiedInfo.education"
 										data-options="validType:'length[0,5]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="nation" class="easyui-validatebox"
 										name="CaseIdentifiedInfo.nation"
 										data-options="validType:'length[0,10]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="address" class="easyui-validatebox"
 										name="CaseIdentifiedInfo.address"
 										data-options="validType:'length[0,50]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="remark" class="easyui-validatebox"
 										name="CaseIdentifiedInfo.remark"
 										data-options="validType:'length[0,50]'" />
 									</td>
@@ -424,7 +443,7 @@ fieldset {
 					<div class="fieldConten">
 						<div style=" text-align: right; margin-right: 20px;">
 							<input class="ButtonCss" type="button" value="增加行"
-								onclick="addRow('tblTestThing')" /> <input class="ButtonCss"
+								onclick="addtblTestThingRow()" /> <input class="ButtonCss"
 								type="button" value="删除最后行" onclick="delRow('tblTestThing')" />
 						</div>
 						<table id="tblTestThing" class="table2" cellspacing="1" border="1">
@@ -440,32 +459,30 @@ fieldset {
 									<th>备注</th>
 								</tr>
 								<tr style="text-align: center;" id="rowTestThing">
-									<td id="rownum">1</td>
+									<td id="checkName">1</td>
 									<td><input id="vv" class="easyui-validatebox"
 										name="CaseCheckInfor.checkName"
 										data-options="required:true,validType:'length[0,20]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="checkClass" class="easyui-validatebox"
 										name="CaseCheckInfor.checkClass"
 										data-options="required:true,validType:'length[0,40]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
-										name="CaseCheckInfor.num"
-										data-options="required:true,validType:'length[0,5]'" />
+									<td><input id="num" class="easyui-numberbox"
+										name="CaseCheckInfor.num" value="0" data-options="min:0" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="unit" class="easyui-validatebox"
 										name="CaseCheckInfor.unit"
 										data-options="required:true,validType:'length[0,5]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
-										name="CaseCheckInfor.getDate"
-										data-options="required:true,validType:'length[0,10]'" />
+									<td><input id="getDate" class="easyui-datebox"
+										required="required" name="CaseCheckInfor.getDate" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="barcode" class="easyui-validatebox"
 										name="CaseCheckInfor.barcode"
 										data-options="required:true,validType:'length[0,15]'" />
 									</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td><input id="remark" class="easyui-validatebox"
 										name="CaseCheckInfor.remark"
 										data-options="required:true,validType:'length[0,50]'" />
 									</td>
@@ -496,47 +513,49 @@ fieldset {
 									</select>
 									</td>
 									<th>鉴定人一</th>
-									<td><select id="appraiser1" class="easyui-combobox" 	name="CaseInternalStatistics.appraiser1"
-										style="width:136px">
+									<td><select id="appraiser1" class="easyui-combobox"
+										name="CaseInternalStatistics.appraiser1" style="width:136px">
 
 									</select>
 									</td>
 									<th>鉴定人二</th>
-									<td><select id="appraiser2" class="easyui-combobox" 	name="CaseInternalStatistics.appraiser2"
-										style="width:136px">
+									<td><select id="appraiser2" class="easyui-combobox"
+										name="CaseInternalStatistics.appraiser2" style="width:136px">
 
 									</select>
 									</td>
 								</tr>
 								<tr>
 									<th>签发人</th>
-									<td><select id="signer" class="easyui-combobox" 	name="CaseInternalStatistics.signer"
-										style="width:136px">
+									<td><select id="signer" class="easyui-combobox"
+										name="CaseInternalStatistics.signer" style="width:136px">
 
 									</select>
 									</td>
 								</tr>
 								<tr>
 									<th>来源渠道</th>
-									<td><select id="sources" class="easyui-combobox" 	name="CaseInternalStatistics.sources"
-										style="width:136px">
+									<td><select id="sources" class="easyui-combobox"
+										name="CaseInternalStatistics.sources" style="width:136px">
 
 									</select>
 									</td>
 									<th>业务维护</th>
-									<td><select id="operationMaintain" class="easyui-combobox" 	name="CaseInternalStatistics.operationMaintain"
+									<td><select id="operationMaintain" class="easyui-combobox"
+										name="CaseInternalStatistics.operationMaintain"
 										style="width:136px">
 
 									</select>
 									</td>
 									<th>VIP客户</th>
-									<td><select id="vip" class="easyui-combobox" 	name="CaseInternalStatistics.vip"
-										style="width:136px">
+									<td><select id="vip" class="easyui-combobox"
+										name="CaseInternalStatistics.vip" style="width:136px">
 
 									</select>
 									</td>
 									<th>业务归口</th>
-									<td><select id="operationsOwner" class="easyui-combobox" 	name="CaseInternalStatistics.operationsOwner"
+									<td><select id="operationsOwner" class="easyui-combobox"
+										name="CaseInternalStatistics.operationsOwner"
 										style="width:136px">
 
 									</select>
@@ -544,7 +563,8 @@ fieldset {
 								</tr>
 								<tr>
 									<th>备注</th>
-									<td colspan="7"><textarea name="" rows="2" cols="20" id="remark" 	name="CaseInternalStatistics.remark"
+									<td colspan="7"><textarea name="" rows="2" cols="20"
+											id="remark" name="CaseInternalStatistics.remark"
 											title="不超过200个字" style="width:100%;height:95px"></textarea>
 									</td>
 								</tr>
