@@ -1,20 +1,15 @@
 package cn.sunn.forensiclion.service.impl;
 
+import cn.sunn.forensiclion.dao.ICaseInforDao;
 import cn.sunn.forensiclion.dao.impl.CaseInforDAOHibernate;
 import cn.sunn.forensiclion.domain.CaseInfor;
 import cn.sunn.forensiclion.service.ICaseInforManager;
 
 public class CaseInforManagerImpl implements ICaseInforManager {
 
-	private CaseInforDAOHibernate caseinfordao;
+	private ICaseInforDao caseinfordao;
 	
-	
-	public CaseInforDAOHibernate getCaseinfordao() {
-		return caseinfordao;
-	}
-
-
-	public void setCaseinfordao(CaseInforDAOHibernate caseinfordao) {
+	public void setCaseinfordao(ICaseInforDao caseinfordao) {
 		this.caseinfordao = caseinfordao;
 	}
 

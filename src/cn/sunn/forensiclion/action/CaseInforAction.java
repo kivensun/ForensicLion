@@ -81,7 +81,7 @@ public class CaseInforAction extends CaseInforBaseAction {
 
 	public String newcase()throws Exception{
 		if (caseinfor != null){
-			if (caseinforMgr.saveCase(caseinfor) == 1){
+			if (caseinformgr.saveCase(caseinfor) == 1){
 				this.getResult().put("result", "SUCCESS");
 			}else{
 				this.getResult().put("result", "ERROR");
