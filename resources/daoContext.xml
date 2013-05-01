@@ -14,6 +14,8 @@
 		parent="daoTemplate" />
 	<bean id="fileDao" class="cn.sunn.forensiclion.dao.impl.FileDAOHibernate"
 		parent="daoTemplate" />
+	<bean id="caseinforDao" class="cn.sunn.forensiclion.dao.impl.CaseInforDAOHibernate"
+		parent="daoTemplate" />
 		
 
 </beans>

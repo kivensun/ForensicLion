@@ -137,10 +137,26 @@ fieldset {
 		fillcombobox('sources', '来源渠道');
 		fillcombobox('operationMaintain', '业务维护');
 		fillcombobox('vip', 'VIP客户');
-		fillcombobox('operationsOwner','业务归口');		
+		fillcombobox('operationsOwner', '业务归口');
 	}
 	$(function() {
 		filldata();
+		$('#btnsave').bind('click', function() {
+			$.messager.progress();
+			$('#ff').form('submit', {
+				url : 'json/case_newcase',
+				onSubmit : function() {
+					var isValid ;//= $(this).form('validate');
+					if (!isValid) {
+						$.messager.progress('close');
+					}
+					return isValid;
+				},
+				success : function() {
+					$.messager.progress('close');
+				}
+			});
+		});
 	});
 </script>
 </head>
@@ -152,7 +168,7 @@ fieldset {
 		data-options="fit:true,border:false">
 		<div style="margin-left:20px; margin-top:20px; ">
 			<div style="padding:10px;border:1px solid #ddd;">
-				<a href="javascript:void(0)" class="easyui-linkbutton"
+				<a href="javascript:void(0)" class="easyui-linkbutton" id="btnsave"
 					data-options="plain:true,iconCls:'icon-save'">
 					&nbsp;保&nbsp;&nbsp;存</a> &nbsp;&nbsp;&nbsp;&nbsp;<a
 					href="javascript:void(0)" class="easyui-linkbutton"
@@ -161,7 +177,7 @@ fieldset {
 			</div>
 		</div>
 		<div style="margin-left:20px; margin-top:20px; text-align: left;">
-			<form action="">
+			<form id="ff" method="post">  
 				<fieldset>
 					<legend>委托事项</legend>
 					<div class="fieldConten">
@@ -202,22 +218,22 @@ fieldset {
 								<th>收件人</th>
 								<td style="width: 135px;"><input id="receiverName"
 									class="easyui-validatebox" name="CaseInfor.receiverName"
-									data-options="required:true,validType:'length[1,10]'" />
+									data-options="alidType:'length[1,10]'" />
 								</td>
 								<th>邮寄地址</th>
 								<td style="width: 135px;"><input id="receiverAddress"
 									class="easyui-validatebox" name="CaseInfor.receiverAddress"
-									data-options="required:true,validType:'length[1,50]'" />
+									data-options="validType:'length[1,50]'" />
 								</td>
 								<th>邮寄邮编</th>
 								<td style="width: 135px;"><input id="vv" id="receiverCode"
 									class="easyui-validatebox" name="CaseInfor.receiverCode"
-									data-options="required:true,validType:'length[1,10]'" />
+									data-options="validType:'length[1,10]'" />
 								</td>
 								<th>电子邮箱</th>
 								<td><input id="receiverEmail" class="easyui-validatebox"
 									name="CaseInfor.receiverEmail"
-									data-options="required:true,validType:['email','length[1,50]']" />
+									data-options="validType:['email','length[1,50]']" />
 								</td>
 							</tr>
 							</tbody>
@@ -246,7 +262,7 @@ fieldset {
 									<th>委托宗号</th>
 									<td><input id="entrusterNum" class="easyui-validatebox"
 										name="CaseInfor.entrusterNum"
-										data-options="required:true,validType:'length[1,20]'" />
+										data-options="validType:'length[1,20]'" />
 									</td>
 								</tr>
 								<tr>
@@ -258,17 +274,17 @@ fieldset {
 									<th>联系电话</th>
 									<td><input id="vv" class="easyui-validatebox"
 										id="linkmanTel" name="CaseInfor.linkmanTel"
-										data-options="required:true,validType:'length[1,30]'" />
+										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>传真号码</th>
 									<td style="width: 135px"><input id="linkmanFax"
 										name="CaseInfor.linkmanFax" class="easyui-validatebox"
-										data-options="required:true,validType:'length[1,30]'" />
+										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>送&nbsp;检&nbsp;人</th>
 									<td><input id="identifySender" class="easyui-validatebox"
 										name="CaseInfor.identifySender"
-										data-options="required:true,validType:'length[1,10]'" />
+										data-options="validType:'length[1,10]'" />
 									</td>
 								</tr>
 								<tr>
@@ -282,17 +298,17 @@ fieldset {
 									<th>联系人</th>
 									<td><input id="insuranceLinkman"
 										class="easyui-validatebox" name="CaseInfor.insuranceLinkman"
-										data-options="required:true,validType:'length[1,30]'" />
+										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>联系电话</th>
 									<td><input id="insuranceTel" class="easyui-validatebox"
 										name="CaseInfor.insuranceTel"
-										data-options="required:true,validType:'length[1,30]'" />
+										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>电子邮件</th>
 									<td><input id="insuranceEmail" class="easyui-validatebox"
 										name="CaseInfor.insuranceEmail"
-										data-options="required:true,validType:['email','length[1,50]']" />
+										data-options="validType:['email','length[1,50]']" />
 									</td>
 								</tr>
 							</tbody>
@@ -327,7 +343,7 @@ fieldset {
 									<th>案件阶段</th>
 									<td style="width: 134px;"><select id="caseProgress"
 										name="CaseInfor.caseProgress" class="easyui-combobox"
-										style="width:134px">
+										style="width:134px" required="required" >
 
 									</select>
 									</td>
@@ -371,7 +387,7 @@ fieldset {
 										data-options="required:true,validType:'length[0,10]'" />
 									</td>
 									<td><input id="chargeAmount" class="easyui-numberbox"
-										name="CaseCharge.chargeAmount" value="0" data-options="min:0" />
+										name="CaseCharge.chargeAmount" value="0" data-options="min:0" required="required"  />
 									</td>
 									<td><input id="chargeRemark" class="easyui-validatebox"
 										name="CaseCharge.chargeRemark"
@@ -459,8 +475,8 @@ fieldset {
 									<th>备注</th>
 								</tr>
 								<tr style="text-align: center;" id="rowTestThing">
-									<td id="checkName">1</td>
-									<td><input id="vv" class="easyui-validatebox"
+									<td id="rownum">1</td>
+									<td><input id="checkName" class="easyui-validatebox"
 										name="CaseCheckInfor.checkName"
 										data-options="required:true,validType:'length[0,20]'" />
 									</td>
@@ -480,11 +496,11 @@ fieldset {
 									</td>
 									<td><input id="barcode" class="easyui-validatebox"
 										name="CaseCheckInfor.barcode"
-										data-options="required:true,validType:'length[0,15]'" />
+										data-options="validType:'length[0,15]'" />
 									</td>
 									<td><input id="remark" class="easyui-validatebox"
 										name="CaseCheckInfor.remark"
-										data-options="required:true,validType:'length[0,50]'" />
+										data-options="validType:'length[0,50]'" />
 									</td>
 								</tr>
 							</tbody>
@@ -514,7 +530,7 @@ fieldset {
 									</td>
 									<th>鉴定人一</th>
 									<td><select id="appraiser1" class="easyui-combobox"
-										name="CaseInternalStatistics.appraiser1" style="width:136px">
+										name="CaseInternalStatistics.appraiser1" style="width:136px" required="required" >
 
 									</select>
 									</td>
@@ -528,7 +544,7 @@ fieldset {
 								<tr>
 									<th>签发人</th>
 									<td><select id="signer" class="easyui-combobox"
-										name="CaseInternalStatistics.signer" style="width:136px">
+										name="CaseInternalStatistics.signer" style="width:136px" required="required" >
 
 									</select>
 									</td>
@@ -536,7 +552,7 @@ fieldset {
 								<tr>
 									<th>来源渠道</th>
 									<td><select id="sources" class="easyui-combobox"
-										name="CaseInternalStatistics.sources" style="width:136px">
+										name="CaseInternalStatistics.sources" style="width:136px" required="required" >
 
 									</select>
 									</td>
@@ -556,7 +572,7 @@ fieldset {
 									<th>业务归口</th>
 									<td><select id="operationsOwner" class="easyui-combobox"
 										name="CaseInternalStatistics.operationsOwner"
-										style="width:136px">
+										style="width:136px" required="required" >
 
 									</select>
 									</td>

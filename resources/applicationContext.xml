@@ -65,6 +65,8 @@
 		p:dictionarydao-ref="dictionaryDao" />
 	<bean id="fileTemplate" abstract="true" lazy-init="true"
 		p:filedao-ref="fileDao" />
+	<bean id="caseinforTemplate" abstract="true" lazy-init="true"
+		p:caseinfordao-ref="caseinforDao" />
 
 	<!-- 定义业务逻辑组件，继承业务逻辑组件的模板 -->
 	<bean id="userMgr" class="cn.sunn.forensiclion.service.impl.UserManagerImpl"
@@ -73,6 +75,8 @@
 		parent="dictionaryTemplate" />
 	<bean id="filemgr" class="cn.sunn.forensiclion.service.impl.FileManagerImpl"
 		parent="fileTemplate" />
+	<bean id="caseinformgr" class="cn.sunn.forensiclion.service.impl.CaseInforManagerImpl"
+		parent="caseinforTemplate" />
 
 
 	<bean id="userDaohibernate" class="cn.sunn.forensiclion.dao.impl.UserDAOHibernate">

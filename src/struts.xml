@@ -46,6 +46,15 @@
 				</param>
 			</result>
 		</action>
+		
+		<action name="case_*" class="cn.sunn.forensiclion.action.CaseInforAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">
+					result
+				</param>
+			</result>
+		</action>
 
 	</package>
 
