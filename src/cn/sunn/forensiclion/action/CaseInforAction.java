@@ -1,5 +1,7 @@
 package cn.sunn.forensiclion.action;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,9 +20,9 @@ public class CaseInforAction extends CaseInforBaseAction {
 	private static final long serialVersionUID = -168703567335144678L;
 
 	private CaseInfor caseinfor = new CaseInfor();
-	private Set<CaseCharge> casecharges = new HashSet<CaseCharge>();
-	private Set<CaseIdentifiedInfo> caseidentifiedinfos = new HashSet<CaseIdentifiedInfo>();
-	private Set<CaseCheckInfor> casecheckinfors = new HashSet<CaseCheckInfor>();
+	private List<CaseCharge> casecharges = new ArrayList<CaseCharge>();
+	private List<CaseIdentifiedInfo> caseidentifiedinfos = new ArrayList<CaseIdentifiedInfo>();
+	private List<CaseCheckInfor> casecheckinfors = new ArrayList<CaseCheckInfor>();
 	private CaseInternalStatistics caseinternalstatistics = new CaseInternalStatistics();
 	
 	
@@ -34,32 +36,34 @@ public class CaseInforAction extends CaseInforBaseAction {
 	}
 
 
-	public Set<CaseCharge> getCasecharges() {
+	
+
+	public List<CaseCharge> getCasecharges() {
 		return casecharges;
 	}
 
 
-	public void setCasecharges(Set<CaseCharge> casecharges) {
+	public void setCasecharges(List<CaseCharge> casecharges) {
 		this.casecharges = casecharges;
 	}
 
 
-	public Set<CaseIdentifiedInfo> getCaseidentifiedinfos() {
+	public List<CaseIdentifiedInfo> getCaseidentifiedinfos() {
 		return caseidentifiedinfos;
 	}
 
 
-	public void setCaseidentifiedinfos(Set<CaseIdentifiedInfo> caseidentifiedinfos) {
+	public void setCaseidentifiedinfos(List<CaseIdentifiedInfo> caseidentifiedinfos) {
 		this.caseidentifiedinfos = caseidentifiedinfos;
 	}
 
 
-	public Set<CaseCheckInfor> getCasecheckinfors() {
+	public List<CaseCheckInfor> getCasecheckinfors() {
 		return casecheckinfors;
 	}
 
 
-	public void setCasecheckinfors(Set<CaseCheckInfor> casecheckinfors) {
+	public void setCasecheckinfors(List<CaseCheckInfor> casecheckinfors) {
 		this.casecheckinfors = casecheckinfors;
 	}
 

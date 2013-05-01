@@ -8,6 +8,9 @@ function addRow(tableID) {
 			$(this).html(num);
 		}
 		$(this).find("input").val("");
+		var id = $(this).find("input").attr("id");
+		var index = num -1;
+		$(this).find("input").attr("name",tableID +'['+ index +'].'+ id);
 	});
 	$("#" + tableID).append(row);
 	$.parser.parse();

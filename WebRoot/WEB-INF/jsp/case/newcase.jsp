@@ -143,7 +143,7 @@ fieldset {
 		filldata();
 		$('#btnsave').bind('click', function() {
 			$.messager.progress();
-			$('#ff').form('submit', {
+			$('#ff2').form('submit', {
 				url : 'json/case_newcase',
 				onSubmit : function() {
 					var isValid ;//= $(this).form('validate');
@@ -186,11 +186,11 @@ fieldset {
 								<th>鉴定专业</th>
 								<td colspan="5"><select id="identifyMajor"
 									class="easyui-combobox" style="width: 582px;"
-									name="CaseInfor.identifyMajor" required="required">
+									name="caseinfor.identifyMajor" required="required">
 								</select></td>
 								<th>委托日期</th>
 								<td style="width: 135px;"><input id="entrustDate"
-									class="easyui-datebox" name="CaseInfor.entrustDate"
+									class="easyui-datebox" name="caseinfor.entrustDate"
 									data-options="formatter:myformatter,parser:myparser"
 									required="required"></input>
 								</td>
@@ -198,17 +198,17 @@ fieldset {
 							<tr>
 								<th>鉴定要求</th>
 								<td colspan="3"><input id="identifyRequest"
-									class="easyui-validatebox" name="CaseInfor.identifyRequest"
+									class="easyui-validatebox" name="caseinfor.identifyRequest"
 									data-options="required:true,validType:'length[1,10]'"
 									style="width:95%" /></td>
 								<th>联系地址</th>
 								<td style="width: 135px"><input id="entrusterAddress"
-									name="CaseInfor.entrusterAddress" class="easyui-validatebox"
+									name="caseinfor.entrusterAddress" class="easyui-validatebox"
 									data-options="required:true,validType:'length[1,10]'" />
 								</td>
 								<th>文书领取</th>
 								<td style="width: 135px"><select id="reportGetway"
-									name="CaseInfor.reportGetway" class="easyui-combobox"
+									name="caseinfor.reportGetway" class="easyui-combobox"
 									style="width:135px">
 
 								</select>
@@ -217,22 +217,22 @@ fieldset {
 							<tr>
 								<th>收件人</th>
 								<td style="width: 135px;"><input id="receiverName"
-									class="easyui-validatebox" name="CaseInfor.receiverName"
+									class="easyui-validatebox" name="caseinfor.receiverName"
 									data-options="alidType:'length[1,10]'" />
 								</td>
 								<th>邮寄地址</th>
 								<td style="width: 135px;"><input id="receiverAddress"
-									class="easyui-validatebox" name="CaseInfor.receiverAddress"
+									class="easyui-validatebox" name="caseinfor.receiverAddress"
 									data-options="validType:'length[1,50]'" />
 								</td>
 								<th>邮寄邮编</th>
 								<td style="width: 135px;"><input id="vv" id="receiverCode"
-									class="easyui-validatebox" name="CaseInfor.receiverCode"
+									class="easyui-validatebox" name="caseinfor.receiverCode"
 									data-options="validType:'length[1,10]'" />
 								</td>
 								<th>电子邮箱</th>
 								<td><input id="receiverEmail" class="easyui-validatebox"
-									name="CaseInfor.receiverEmail"
+									name="caseinfor.receiverEmail"
 									data-options="validType:['email','length[1,50]']" />
 								</td>
 							</tr>
@@ -248,66 +248,66 @@ fieldset {
 								<tr>
 									<th>委托方</th>
 									<td colspan="3"><input id="entruster"
-										class="easyui-validatebox" name="CaseInfor.entruster"
+										class="easyui-validatebox" name="caseinfor.entruster"
 										data-options="required:true,validType:'length[1,50]'"
 										style="width:90%" />
 									</td>
 									<th>与本案关系</th>
 									<td><select id="entrusterRelation"
-										name="CaseInfor.entrusterRelation" class="easyui-combobox"
+										name="caseinfor.entrusterRelation" class="easyui-combobox"
 										style="width:135px">
 
 									</select>
 									</td>
 									<th>委托宗号</th>
 									<td><input id="entrusterNum" class="easyui-validatebox"
-										name="CaseInfor.entrusterNum"
+										name="caseinfor.entrusterNum"
 										data-options="validType:'length[1,20]'" />
 									</td>
 								</tr>
 								<tr>
 									<th>联&nbsp;系&nbsp;人</th>
 									<td><input id="linkman" class="easyui-validatebox"
-										name="CaseInfor.linkman"
+										name="caseinfor.linkman"
 										data-options="required:true,validType:'length[1,20]'" />
 									</td>
 									<th>联系电话</th>
-									<td><input id="vv" class="easyui-validatebox"
-										id="linkmanTel" name="CaseInfor.linkmanTel"
+									<td><input  class="easyui-validatebox"
+										id="linkmanTel" name="caseinfor.linkmanTel"
 										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>传真号码</th>
 									<td style="width: 135px"><input id="linkmanFax"
-										name="CaseInfor.linkmanFax" class="easyui-validatebox"
+										name="caseinfor.linkmanFax" class="easyui-validatebox"
 										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>送&nbsp;检&nbsp;人</th>
 									<td><input id="identifySender" class="easyui-validatebox"
-										name="CaseInfor.identifySender"
+										name="caseinfor.identifySender"
 										data-options="validType:'length[1,10]'" />
 									</td>
 								</tr>
 								<tr>
 									<th>保险单位</th>
 									<td><select id="insuranceUnit"
-										name="CaseInfor.insuranceUnit" class="easyui-combobox"
+										name="caseinfor.insuranceUnit" class="easyui-combobox"
 										style="width:135px">
 
 									</select>
 									</td>
 									<th>联系人</th>
 									<td><input id="insuranceLinkman"
-										class="easyui-validatebox" name="CaseInfor.insuranceLinkman"
+										class="easyui-validatebox" name="caseinfor.insuranceLinkman"
 										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>联系电话</th>
 									<td><input id="insuranceTel" class="easyui-validatebox"
-										name="CaseInfor.insuranceTel"
+										name="caseinforinsuranceTel"
 										data-options="validType:'length[1,30]'" />
 									</td>
 									<th>电子邮件</th>
 									<td><input id="insuranceEmail" class="easyui-validatebox"
-										name="CaseInfor.insuranceEmail"
+										name="caseinfor.insuranceEmail"
 										data-options="validType:['email','length[1,50]']" />
 									</td>
 								</tr>
@@ -323,26 +323,26 @@ fieldset {
 								<tr>
 									<th>案发日期</th>
 									<td style="width: 134px;"><input id="caseDate"
-										class="easyui-datebox" name="CaseInfor.caseDate"
+										class="easyui-datebox" name="caseinfor.caseDate"
 										data-options="formatter:myformatter,parser:myparser"
 										required="required" />
 									</td>
 
 									<th>案件类别</th>
 									<td style="width: 134px;"><input id="caseClass"
-										name="CaseInfor.caseClass" class="easyui-validatebox"
+										name="caseinfor.caseClass" class="easyui-validatebox"
 										data-options="required:true,validType:'length[1,10]'" />
 									</td>
 
 									<th>鉴定次数</th>
 									<td style="width: 134px;"><input id="caseIdentifyTimes"
-										name="CaseInfor.caseIdentifyTimes" class="easyui-numberbox"
+										name="caseinfor.caseIdentifyTimes" class="easyui-numberbox"
 										value="0" data-options="min:0" />
 									</td>
 
 									<th>案件阶段</th>
 									<td style="width: 134px;"><select id="caseProgress"
-										name="CaseInfor.caseProgress" class="easyui-combobox"
+										name="caseinfor.caseProgress" class="easyui-combobox"
 										style="width:134px" required="required" >
 
 									</select>
@@ -351,7 +351,7 @@ fieldset {
 								</tr>
 								<tr>
 									<th>简案摘要</th>
-									<td colspan="7"><textarea name="CaseInfor.caseRemark"
+									<td colspan="7"><textarea name="caseinfor.caseRemark"
 											rows="2" cols="20" id="caseRemark" title="不能超过800个字！"
 											style="width: 99%;height: 95px"></textarea></td>
 								</tr>
@@ -359,14 +359,16 @@ fieldset {
 						</table>
 					</div>
 				</fieldset>
+				</form>
+				<form id="ff2" method="post">
 				<fieldset>
 					<legend>鉴定收费</legend>
 					<div class="fieldConten">
 						<div style=" text-align: right; margin-right: 20px;">
-							<input type="button" value="增加行" onclick="addRow('tblcharge');" />
-							<input type="button" value="删除最后行" onclick="delRow('tblcharge')" />
+							<input type="button" value="增加行" onclick="addRow('casecharges');" />
+							<input type="button" value="删除最后行" onclick="delRow('casecharges')" />
 						</div>
-						<table id="tblcharge" class="table2" cellspacing="1" border="1">
+						<table id="casecharges" class="table2" cellspacing="1" border="1">
 							<tbody>
 								<tr>
 									<th style="width: 40px;">编号</th>
@@ -378,19 +380,19 @@ fieldset {
 								<tr id="rowcharge">
 									<td id="rownum" style="text-align: center;">1</td>
 									<td><input id="chargeClass" class="easyui-validatebox"
-										name="CaseCharge.chargeClass"
+										name="casecharges[0].chargeClass"
 										data-options="required:true,validType:'length[0,30]'" />
 									</td>
 									<td><input id="chargeStandardType"
 										class="easyui-validatebox"
-										name="CaseCharge.chargeStandardType"
+										name="casecharges[0].chargeStandardType"
 										data-options="required:true,validType:'length[0,10]'" />
 									</td>
-									<td><input id="chargeAmount" class="easyui-numberbox"
-										name="CaseCharge.chargeAmount" value="0" data-options="min:0" required="required"  />
+									<td><input id="chargeAmount" class="easyui-validatebox"
+										name="casecharges[0].chargeAmount" value="0"  required="required"  />
 									</td>
 									<td><input id="chargeRemark" class="easyui-validatebox"
-										name="CaseCharge.chargeRemark"
+										name="casecharges[0].chargeRemark"
 										data-options="validType:'length[0,50]'" />
 									</td>
 								</tr>
@@ -398,16 +400,17 @@ fieldset {
 						</table>
 					</div>
 				</fieldset>
+				</form>
 				<fieldset>
 					<legend>被鉴定人信息</legend>
 					<div class="fieldConten">
 						<div style="text-align: right; margin-right: 20px;">
 							<input class="ButtonCss" id="Button4" type="button" value="增加行"
-								onclick="addRow('tblmember')" /> <input class="ButtonCss"
+								onclick="addRow('CaseIdentifiedInfo')" /> <input class="ButtonCss"
 								id="Button7" type="button" value="删除最后行"
-								onclick="delRow('tblmember')" />
+								onclick="delRow('CaseIdentifiedInfo')" />
 						</div>
-						<table id="tblmember" class="table2" cellspacing="1" border="1">
+						<table id="CaseIdentifiedInfo" class="table2" cellspacing="1" border="1">
 							<tbody>
 								<tr>
 									<th style="width: 40px;">编号</th>
@@ -588,7 +591,7 @@ fieldset {
 						</table>
 					</div>
 				</fieldset>
-			</form>
+			<!-- </form> -->
 		</div>
 	</div>
 	<script type="text/javascript">
