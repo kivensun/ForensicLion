@@ -15,7 +15,7 @@ public class RightAction extends ActionSupport {
 	{
 		ActionContext ctx = ActionContext.getContext();
 		System.out.println((User)ctx.getSession().get("user"));
-		Set<Dictionary> functions = ((User)ctx.getSession().get("user")).getMyfuns();
+		Set<Dictionary> functions = ((User)ctx.getSession().get("user")).getDictionaries();
 		Iterator it = functions.iterator();
 		while (it.hasNext())
 		{
@@ -33,7 +33,7 @@ public class RightAction extends ActionSupport {
 	{
 		ActionContext ctx = ActionContext.getContext();
 		System.out.println((User)ctx.getSession().get("user"));
-		Set<Dictionary> functions = ((User)ctx.getSession().get("user")).getMyfuns();
+		Set<Dictionary> functions = ((User)ctx.getSession().get("user")).getDictionaries();
 		Iterator it = functions.iterator();
 		while (it.hasNext())
 		{

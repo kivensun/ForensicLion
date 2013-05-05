@@ -1,15 +1,26 @@
 package cn.sunn.forensiclion.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * CaseIdentifiedInfo entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "case_identified_info", catalog = "ForensicLion")
 public class CaseIdentifiedInfo implements java.io.Serializable {
 
 	// Fields
 
-	private Long id;
-	private String caseId;
+	private long id;
+	private CaseInfor caseInfor;
 	private String name;
 	private String sex;
 	private String idcard;
@@ -25,10 +36,10 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CaseIdentifiedInfo(String caseId, String name, String sex,
+	public CaseIdentifiedInfo(CaseInfor caseInfor, String name, String sex,
 			String idcard, String education, String nation, String address,
 			String remark) {
-		this.caseId = caseId;
+		this.caseInfor = caseInfor;
 		this.name = name;
 		this.sex = sex;
 		this.idcard = idcard;
@@ -39,23 +50,27 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 	}
 
 	// Property accessors
-
-	public Long getId() {
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-
-	public String getCaseId() {
-		return this.caseId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "case_id")
+	public CaseInfor getCaseInfor() {
+		return this.caseInfor;
 	}
 
-	public void setCaseId(String caseId) {
-		this.caseId = caseId;
+	public void setCaseInfor(CaseInfor caseInfor) {
+		this.caseInfor = caseInfor;
 	}
 
+	@Column(name = "name", length = 30)
 	public String getName() {
 		return this.name;
 	}
@@ -64,6 +79,7 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 		this.name = name;
 	}
 
+	@Column(name = "sex", length = 100)
 	public String getSex() {
 		return this.sex;
 	}
@@ -72,6 +88,7 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 		this.sex = sex;
 	}
 
+	@Column(name = "idcard", length = 20)
 	public String getIdcard() {
 		return this.idcard;
 	}
@@ -80,6 +97,7 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 		this.idcard = idcard;
 	}
 
+	@Column(name = "education", length = 100)
 	public String getEducation() {
 		return this.education;
 	}
@@ -88,6 +106,7 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 		this.education = education;
 	}
 
+	@Column(name = "nation", length = 100)
 	public String getNation() {
 		return this.nation;
 	}
@@ -96,6 +115,7 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 		this.nation = nation;
 	}
 
+	@Column(name = "address", length = 100)
 	public String getAddress() {
 		return this.address;
 	}
@@ -104,6 +124,7 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 		this.address = address;
 	}
 
+	@Column(name = "remark", length = 100)
 	public String getRemark() {
 		return this.remark;
 	}

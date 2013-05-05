@@ -1,23 +1,23 @@
 #MyEclipse Hibernate Properties
-#Wed May 01 14:13:56 GMT+08:00 2013
+#Sat May 04 15:46:00 GMT+08:00 2013
 sessionFactoryName=
-genBasicCompId=false
+genBasicCompId=true
 profile=
 daoSFId=
 version=3.3
 jndiPath=
-detectM2M=false
+detectM2M=true
 reStrategyClass=
-detectO2O=false
+detectO2O=true
 springDaoFile=
-useJavaTypes=true
-keyGenerator=
+useJavaTypes=false
+keyGenerator=identity
 libInstallFolder=<no jars/zips in selected libraries>
 addLibs2Project=true
-genVersionTag=false
+genVersionTag=true
 sessionFactoryId=
 basePersistenceClass=
-genAnnotations=false
+genAnnotations=true
 reSettingsFile=
 configFile=/ForensicLion/src/hibernate.cfg.xml
 createConfigFile=false

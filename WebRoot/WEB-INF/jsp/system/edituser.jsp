@@ -85,7 +85,7 @@ table,th,td {
 							id : id
 						}, function(data) {
 							user = data.user;
-							$.each(user.myfuns, function(i, item) {
+							$.each(user.dictionaries, function(i, item) {
 								var node = $('#tt').tree('find', item.id);
 								$('#tt').tree('check', node.target);
 							});
@@ -136,7 +136,7 @@ table,th,td {
 			user.practiceNum = _practiceNum;
 			user.remark = _remark;
 			user.status = _status;
-			user.myfuns = _myfuns;
+			user.dictionaries = _myfuns;
 			var strUser = JSON.stringify(user);
 			$.ajax({
 				url : "json/user_editUser",

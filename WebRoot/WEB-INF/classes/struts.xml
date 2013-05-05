@@ -46,10 +46,13 @@
 				</param>
 			</result>
 		</action>
-		
+
 		<action name="case_*" class="cn.sunn.forensiclion.action.CaseInforAction"
 			method="{1}">
 			<result type="json">
+				<param name="noCache">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="contentType">text/html</param>
 				<param name="root">
 					result
 				</param>
@@ -67,12 +70,9 @@
 			<result name="success">WEB-INF/jsp/main.jsp</result>
 			<result name="error">WEB-INF/jsp/login.jsp</result>
 		</action>
-	<!--  开发时 去掉验证
-	 	<action name="casemgr" class="cn.sunn.forensiclion.action.RightAction"
-			method="casemgr">
-			<result name="success">WEB-INF/jsp/case/casemain.jsp</result>
-			<result name="error">WEB-INF/jsp/main.jsp</result>
-		</action> -->
+		<!-- 开发时 去掉验证 <action name="casemgr" class="cn.sunn.forensiclion.action.RightAction" 
+			method="casemgr"> <result name="success">WEB-INF/jsp/case/casemain.jsp</result> 
+			<result name="error">WEB-INF/jsp/main.jsp</result> </action> -->
 
 		<action name="download_file" class="cn.sunn.forensiclion.action.FileAction"
 			method="download">
@@ -108,14 +108,14 @@
 		<action name="uploader">
 			<result>WEB-INF/jsp/common/uploader.html</result>
 		</action>
-		
+
 		<action name="casemgr">
 			<result>WEB-INF/jsp/case/casemain.jsp</result>
 		</action>
 		<action name="newcase">
 			<result>WEB-INF/jsp/case/newcase.jsp</result>
 		</action>
-		
+
 		<action name="editdoc">
 			<result>WEB-INF/jsp/common/editdoc.jsp</result>
 		</action>

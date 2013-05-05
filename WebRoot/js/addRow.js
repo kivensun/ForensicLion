@@ -2,7 +2,6 @@
 function addRow(tableID) {
 	var num = $("#" + tableID + " tr").length;
 	var row = $("#" + tableID + "  tr").eq(1).clone();
-	row.removeAttr("id");
 	$.each(row.find("td"), function(i) {
 		if (i == 0) {
 			$(this).html(num);

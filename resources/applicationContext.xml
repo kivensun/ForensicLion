@@ -21,21 +21,22 @@
 	<!-- 定义Hibernate的SessionFactory -->
 	<!-- 依赖注入数据源，注入正是上面定义的dataSource -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
 		p:dataSource-ref="dataSource">
 		<!-- mappingResouces属性用来列出全部映射文件 -->
-		<property name="mappingResources">
+		<property name="annotatedClasses">
 			<list>
 				<!-- 以下用来列出Hibernate映射文件 -->
-				<value>cn/sunn/forensiclion/domain/User.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/Dictionary.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/UsermanageHis.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/MFile.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/CaseCharge.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/CaseCheckInfor.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/CaseIdentifiedInfo.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/CaseInfor.hbm.xml</value>
-				<value>cn/sunn/forensiclion/domain/CaseInternalStatistics.hbm.xml</value>
+				<value>cn.sunn.forensiclion.domain.CaseCharge</value>
+				<value>cn.sunn.forensiclion.domain.CaseCheckInfor</value>
+				<value>cn.sunn.forensiclion.domain.CaseFile</value>
+				<value>cn.sunn.forensiclion.domain.CaseIdentifiedInfo</value>
+				<value>cn.sunn.forensiclion.domain.CaseInfor</value>
+				<value>cn.sunn.forensiclion.domain.CaseInternalStatistics</value>
+				<value>cn.sunn.forensiclion.domain.Dictionary</value>
+				<value>cn.sunn.forensiclion.domain.Mfile</value>
+				<value>cn.sunn.forensiclion.domain.User</value>
+				<value>cn.sunn.forensiclion.domain.UsermanageHis</value>
 			</list>
 		</property>
 		<!-- 定义Hibernate的SessionFactory的属性 -->

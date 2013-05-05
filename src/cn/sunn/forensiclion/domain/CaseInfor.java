@@ -1,16 +1,30 @@
 package cn.sunn.forensiclion.domain;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * CaseInfor entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "case_infor", catalog = "ForensicLion")
 public class CaseInfor implements java.io.Serializable {
 
 	// Fields
 
-	private Long id;
+	private long id;
 	private String caseId;
 	private String identifyMajor;
 	private Date entrustDate;
@@ -38,6 +52,13 @@ public class CaseInfor implements java.io.Serializable {
 	private String caseProgress;
 	private String caseRemark;
 	private String status;
+	private Set<CaseCheckInfor> caseCheckInfors = new HashSet<CaseCheckInfor>(0);
+	private Set<CaseFile> caseFiles = new HashSet<CaseFile>(0);
+	private Set<CaseIdentifiedInfo> caseIdentifiedInfos = new HashSet<CaseIdentifiedInfo>(
+			0);
+	private Set<CaseCharge> caseCharges = new HashSet<CaseCharge>(0);
+	private Set<CaseInternalStatistics> caseInternalStatisticses = new HashSet<CaseInternalStatistics>(
+			0);
 
 	// Constructors
 
@@ -60,7 +81,11 @@ public class CaseInfor implements java.io.Serializable {
 			String insuranceUnit, String insuranceLinkman, String insuranceTel,
 			String insuranceEmail, Date caseDate, String caseClass,
 			Integer caseIdentifyTimes, String caseProgress, String caseRemark,
-			String status) {
+			String status, Set<CaseCheckInfor> caseCheckInfors,
+			Set<CaseFile> caseFiles,
+			Set<CaseIdentifiedInfo> caseIdentifiedInfos,
+			Set<CaseCharge> caseCharges,
+			Set<CaseInternalStatistics> caseInternalStatisticses) {
 		this.caseId = caseId;
 		this.identifyMajor = identifyMajor;
 		this.entrustDate = entrustDate;
@@ -88,18 +113,26 @@ public class CaseInfor implements java.io.Serializable {
 		this.caseProgress = caseProgress;
 		this.caseRemark = caseRemark;
 		this.status = status;
+		this.caseCheckInfors = caseCheckInfors;
+		this.caseFiles = caseFiles;
+		this.caseIdentifiedInfos = caseIdentifiedInfos;
+		this.caseCharges = caseCharges;
+		this.caseInternalStatisticses = caseInternalStatisticses;
 	}
 
 	// Property accessors
-
-	public Long getId() {
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
+	@Column(name = "case_id", nullable = false, length = 10)
 	public String getCaseId() {
 		return this.caseId;
 	}
@@ -108,6 +141,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.caseId = caseId;
 	}
 
+	@Column(name = "identify_major", length = 60)
 	public String getIdentifyMajor() {
 		return this.identifyMajor;
 	}
@@ -115,7 +149,8 @@ public class CaseInfor implements java.io.Serializable {
 	public void setIdentifyMajor(String identifyMajor) {
 		this.identifyMajor = identifyMajor;
 	}
-
+	@Temporal(TemporalType.DATE)
+	@Column(name = "entrust_date", length = 10)
 	public Date getEntrustDate() {
 		return this.entrustDate;
 	}
@@ -124,6 +159,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.entrustDate = entrustDate;
 	}
 
+	@Column(name = "identify_request", length = 300)
 	public String getIdentifyRequest() {
 		return this.identifyRequest;
 	}
@@ -132,6 +168,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.identifyRequest = identifyRequest;
 	}
 
+	@Column(name = "entruster_address", length = 300)
 	public String getEntrusterAddress() {
 		return this.entrusterAddress;
 	}
@@ -140,6 +177,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.entrusterAddress = entrusterAddress;
 	}
 
+	@Column(name = "report_getway", length = 30)
 	public String getReportGetway() {
 		return this.reportGetway;
 	}
@@ -148,6 +186,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.reportGetway = reportGetway;
 	}
 
+	@Column(name = "receiver_name", length = 20)
 	public String getReceiverName() {
 		return this.receiverName;
 	}
@@ -156,6 +195,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.receiverName = receiverName;
 	}
 
+	@Column(name = "receiver_address", length = 300)
 	public String getReceiverAddress() {
 		return this.receiverAddress;
 	}
@@ -164,6 +204,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.receiverAddress = receiverAddress;
 	}
 
+	@Column(name = "receiver_code", length = 10)
 	public String getReceiverCode() {
 		return this.receiverCode;
 	}
@@ -172,6 +213,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.receiverCode = receiverCode;
 	}
 
+	@Column(name = "receiver_email", length = 50)
 	public String getReceiverEmail() {
 		return this.receiverEmail;
 	}
@@ -180,6 +222,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.receiverEmail = receiverEmail;
 	}
 
+	@Column(name = "entruster", length = 100)
 	public String getEntruster() {
 		return this.entruster;
 	}
@@ -188,6 +231,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.entruster = entruster;
 	}
 
+	@Column(name = "entruster_relation", length = 100)
 	public String getEntrusterRelation() {
 		return this.entrusterRelation;
 	}
@@ -196,6 +240,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.entrusterRelation = entrusterRelation;
 	}
 
+	@Column(name = "entruster_num", length = 30)
 	public String getEntrusterNum() {
 		return this.entrusterNum;
 	}
@@ -204,6 +249,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.entrusterNum = entrusterNum;
 	}
 
+	@Column(name = "linkman", length = 30)
 	public String getLinkman() {
 		return this.linkman;
 	}
@@ -212,6 +258,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.linkman = linkman;
 	}
 
+	@Column(name = "linkman_tel", length = 30)
 	public String getLinkmanTel() {
 		return this.linkmanTel;
 	}
@@ -220,6 +267,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.linkmanTel = linkmanTel;
 	}
 
+	@Column(name = "linkman_fax", length = 30)
 	public String getLinkmanFax() {
 		return this.linkmanFax;
 	}
@@ -228,6 +276,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.linkmanFax = linkmanFax;
 	}
 
+	@Column(name = "identify_sender", length = 30)
 	public String getIdentifySender() {
 		return this.identifySender;
 	}
@@ -236,6 +285,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.identifySender = identifySender;
 	}
 
+	@Column(name = "insurance_unit", length = 100)
 	public String getInsuranceUnit() {
 		return this.insuranceUnit;
 	}
@@ -244,6 +294,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.insuranceUnit = insuranceUnit;
 	}
 
+	@Column(name = "insurance_linkman", length = 30)
 	public String getInsuranceLinkman() {
 		return this.insuranceLinkman;
 	}
@@ -252,6 +303,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.insuranceLinkman = insuranceLinkman;
 	}
 
+	@Column(name = "insurance_tel", length = 30)
 	public String getInsuranceTel() {
 		return this.insuranceTel;
 	}
@@ -260,6 +312,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.insuranceTel = insuranceTel;
 	}
 
+	@Column(name = "insurance_email", length = 50)
 	public String getInsuranceEmail() {
 		return this.insuranceEmail;
 	}
@@ -267,7 +320,8 @@ public class CaseInfor implements java.io.Serializable {
 	public void setInsuranceEmail(String insuranceEmail) {
 		this.insuranceEmail = insuranceEmail;
 	}
-
+	@Temporal(TemporalType.DATE)
+	@Column(name = "case_date", length = 10)
 	public Date getCaseDate() {
 		return this.caseDate;
 	}
@@ -276,6 +330,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.caseDate = caseDate;
 	}
 
+	@Column(name = "case_class", length = 100)
 	public String getCaseClass() {
 		return this.caseClass;
 	}
@@ -284,6 +339,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.caseClass = caseClass;
 	}
 
+	@Column(name = "case_identify_times")
 	public Integer getCaseIdentifyTimes() {
 		return this.caseIdentifyTimes;
 	}
@@ -292,6 +348,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.caseIdentifyTimes = caseIdentifyTimes;
 	}
 
+	@Column(name = "case_progress", length = 100)
 	public String getCaseProgress() {
 		return this.caseProgress;
 	}
@@ -300,6 +357,7 @@ public class CaseInfor implements java.io.Serializable {
 		this.caseProgress = caseProgress;
 	}
 
+	@Column(name = "case_remark", length = 3000)
 	public String getCaseRemark() {
 		return this.caseRemark;
 	}
@@ -308,12 +366,55 @@ public class CaseInfor implements java.io.Serializable {
 		this.caseRemark = caseRemark;
 	}
 
+	@Column(name = "status", length = 100)
 	public String getStatus() {
 		return this.status;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	public Set<CaseCheckInfor> getCaseCheckInfors() {
+		return this.caseCheckInfors;
+	}
+
+	public void setCaseCheckInfors(Set<CaseCheckInfor> caseCheckInfors) {
+		this.caseCheckInfors = caseCheckInfors;
+	}
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	public Set<CaseFile> getCaseFiles() {
+		return this.caseFiles;
+	}
+
+	public void setCaseFiles(Set<CaseFile> caseFiles) {
+		this.caseFiles = caseFiles;
+	}
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	public Set<CaseIdentifiedInfo> getCaseIdentifiedInfos() {
+		return this.caseIdentifiedInfos;
+	}
+
+	public void setCaseIdentifiedInfos(
+			Set<CaseIdentifiedInfo> caseIdentifiedInfos) {
+		this.caseIdentifiedInfos = caseIdentifiedInfos;
+	}
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	public Set<CaseCharge> getCaseCharges() {
+		return this.caseCharges;
+	}
+
+	public void setCaseCharges(Set<CaseCharge> caseCharges) {
+		this.caseCharges = caseCharges;
+	}
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	public Set<CaseInternalStatistics> getCaseInternalStatisticses() {
+		return this.caseInternalStatisticses;
+	}
+
+	public void setCaseInternalStatisticses(
+			Set<CaseInternalStatistics> caseInternalStatisticses) {
+		this.caseInternalStatisticses = caseInternalStatisticses;
 	}
 
 }

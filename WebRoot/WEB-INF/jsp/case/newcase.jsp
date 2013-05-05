@@ -141,21 +141,23 @@ fieldset {
 	}
 	$(function() {
 		filldata();
-		$('#btnsave').bind('click', function() {
-			$.messager.progress();
-			$('#ff2').form('submit', {
-				url : 'json/case_newcase',
-				onSubmit : function() {
-					var isValid ;//= $(this).form('validate');
-					if (!isValid) {
-						$.messager.progress('close');
-					}
-					return isValid;
-				},
-				success : function() {
+		$('#ff').form({
+			url : 'json/case_newcase',
+			onSubmit : function() {
+				var isValid = true;//= $(this).form('validate');
+				if (!isValid) {
 					$.messager.progress('close');
 				}
-			});
+				return isValid;
+			},
+			success : function(data) {
+				alert(data);
+				$.messager.progress('close');
+			}
+		});
+		$('#btnsave').bind('click', function() {
+			$.messager.progress();
+			$('#ff').submit();  
 		});
 	});
 </script>
@@ -177,7 +179,7 @@ fieldset {
 			</div>
 		</div>
 		<div style="margin-left:20px; margin-top:20px; text-align: left;">
-			<form id="ff" method="post">  
+			<form id="ff" method="post">
 				<fieldset>
 					<legend>委托事项</legend>
 					<div class="fieldConten">
@@ -187,54 +189,49 @@ fieldset {
 								<td colspan="5"><select id="identifyMajor"
 									class="easyui-combobox" style="width: 582px;"
 									name="caseinfor.identifyMajor" required="required">
-								</select></td>
+								</select>
+								</td>
 								<th>委托日期</th>
 								<td style="width: 135px;"><input id="entrustDate"
 									class="easyui-datebox" name="caseinfor.entrustDate"
 									data-options="formatter:myformatter,parser:myparser"
-									required="required"></input>
-								</td>
+									required="required"></input></td>
 							</tr>
 							<tr>
 								<th>鉴定要求</th>
 								<td colspan="3"><input id="identifyRequest"
 									class="easyui-validatebox" name="caseinfor.identifyRequest"
 									data-options="required:true,validType:'length[1,10]'"
-									style="width:95%" /></td>
+									style="width:95%" />
+								</td>
 								<th>联系地址</th>
 								<td style="width: 135px"><input id="entrusterAddress"
 									name="caseinfor.entrusterAddress" class="easyui-validatebox"
-									data-options="required:true,validType:'length[1,10]'" />
-								</td>
+									data-options="required:true,validType:'length[1,10]'" /></td>
 								<th>文书领取</th>
 								<td style="width: 135px"><select id="reportGetway"
 									name="caseinfor.reportGetway" class="easyui-combobox"
 									style="width:135px">
 
-								</select>
-								</td>
+								</select></td>
 							</tr>
 							<tr>
 								<th>收件人</th>
 								<td style="width: 135px;"><input id="receiverName"
 									class="easyui-validatebox" name="caseinfor.receiverName"
-									data-options="alidType:'length[1,10]'" />
-								</td>
+									data-options="alidType:'length[1,10]'" /></td>
 								<th>邮寄地址</th>
 								<td style="width: 135px;"><input id="receiverAddress"
 									class="easyui-validatebox" name="caseinfor.receiverAddress"
-									data-options="validType:'length[1,50]'" />
-								</td>
+									data-options="validType:'length[1,50]'" /></td>
 								<th>邮寄邮编</th>
 								<td style="width: 135px;"><input id="vv" id="receiverCode"
 									class="easyui-validatebox" name="caseinfor.receiverCode"
-									data-options="validType:'length[1,10]'" />
-								</td>
+									data-options="validType:'length[1,10]'" /></td>
 								<th>电子邮箱</th>
 								<td><input id="receiverEmail" class="easyui-validatebox"
 									name="caseinfor.receiverEmail"
-									data-options="validType:['email','length[1,50]']" />
-								</td>
+									data-options="validType:['email','length[1,50]']" /></td>
 							</tr>
 							</tbody>
 						</table>
@@ -250,42 +247,35 @@ fieldset {
 									<td colspan="3"><input id="entruster"
 										class="easyui-validatebox" name="caseinfor.entruster"
 										data-options="required:true,validType:'length[1,50]'"
-										style="width:90%" />
-									</td>
+										style="width:90%" /></td>
 									<th>与本案关系</th>
 									<td><select id="entrusterRelation"
 										name="caseinfor.entrusterRelation" class="easyui-combobox"
 										style="width:135px">
 
-									</select>
-									</td>
+									</select></td>
 									<th>委托宗号</th>
 									<td><input id="entrusterNum" class="easyui-validatebox"
 										name="caseinfor.entrusterNum"
-										data-options="validType:'length[1,20]'" />
-									</td>
+										data-options="validType:'length[1,20]'" /></td>
 								</tr>
 								<tr>
 									<th>联&nbsp;系&nbsp;人</th>
 									<td><input id="linkman" class="easyui-validatebox"
 										name="caseinfor.linkman"
-										data-options="required:true,validType:'length[1,20]'" />
-									</td>
+										data-options="required:true,validType:'length[1,20]'" /></td>
 									<th>联系电话</th>
-									<td><input  class="easyui-validatebox"
-										id="linkmanTel" name="caseinfor.linkmanTel"
-										data-options="validType:'length[1,30]'" />
-									</td>
+									<td><input class="easyui-validatebox" id="linkmanTel"
+										name="caseinfor.linkmanTel"
+										data-options="validType:'length[1,30]'" /></td>
 									<th>传真号码</th>
 									<td style="width: 135px"><input id="linkmanFax"
 										name="caseinfor.linkmanFax" class="easyui-validatebox"
-										data-options="validType:'length[1,30]'" />
-									</td>
+										data-options="validType:'length[1,30]'" /></td>
 									<th>送&nbsp;检&nbsp;人</th>
 									<td><input id="identifySender" class="easyui-validatebox"
 										name="caseinfor.identifySender"
-										data-options="validType:'length[1,10]'" />
-									</td>
+										data-options="validType:'length[1,10]'" /></td>
 								</tr>
 								<tr>
 									<th>保险单位</th>
@@ -293,23 +283,19 @@ fieldset {
 										name="caseinfor.insuranceUnit" class="easyui-combobox"
 										style="width:135px">
 
-									</select>
-									</td>
+									</select></td>
 									<th>联系人</th>
 									<td><input id="insuranceLinkman"
 										class="easyui-validatebox" name="caseinfor.insuranceLinkman"
-										data-options="validType:'length[1,30]'" />
-									</td>
+										data-options="validType:'length[1,30]'" /></td>
 									<th>联系电话</th>
 									<td><input id="insuranceTel" class="easyui-validatebox"
 										name="caseinforinsuranceTel"
-										data-options="validType:'length[1,30]'" />
-									</td>
+										data-options="validType:'length[1,30]'" /></td>
 									<th>电子邮件</th>
 									<td><input id="insuranceEmail" class="easyui-validatebox"
 										name="caseinfor.insuranceEmail"
-										data-options="validType:['email','length[1,50]']" />
-									</td>
+										data-options="validType:['email','length[1,50]']" /></td>
 								</tr>
 							</tbody>
 						</table>
@@ -325,48 +311,45 @@ fieldset {
 									<td style="width: 134px;"><input id="caseDate"
 										class="easyui-datebox" name="caseinfor.caseDate"
 										data-options="formatter:myformatter,parser:myparser"
-										required="required" />
-									</td>
+										required="required" /></td>
 
 									<th>案件类别</th>
 									<td style="width: 134px;"><input id="caseClass"
 										name="caseinfor.caseClass" class="easyui-validatebox"
-										data-options="required:true,validType:'length[1,10]'" />
-									</td>
+										data-options="required:true,validType:'length[1,10]'" /></td>
 
 									<th>鉴定次数</th>
 									<td style="width: 134px;"><input id="caseIdentifyTimes"
 										name="caseinfor.caseIdentifyTimes" class="easyui-numberbox"
-										value="0" data-options="min:0" />
-									</td>
+										value="0" data-options="min:0" /></td>
 
 									<th>案件阶段</th>
 									<td style="width: 134px;"><select id="caseProgress"
 										name="caseinfor.caseProgress" class="easyui-combobox"
-										style="width:134px" required="required" >
+										style="width:134px" required="required">
 
-									</select>
-									</td>
+									</select></td>
 
 								</tr>
 								<tr>
 									<th>简案摘要</th>
 									<td colspan="7"><textarea name="caseinfor.caseRemark"
 											rows="2" cols="20" id="caseRemark" title="不能超过800个字！"
-											style="width: 99%;height: 95px"></textarea></td>
+											style="width: 99%;height: 95px"></textarea>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</fieldset>
-				</form>
-				<form id="ff2" method="post">
+		
 				<fieldset>
 					<legend>鉴定收费</legend>
 					<div class="fieldConten">
 						<div style=" text-align: right; margin-right: 20px;">
 							<input type="button" value="增加行" onclick="addRow('casecharges');" />
-							<input type="button" value="删除最后行" onclick="delRow('casecharges')" />
+							<input type="button" value="删除最后行"
+								onclick="delRow('casecharges')" />
 						</div>
 						<table id="casecharges" class="table2" cellspacing="1" border="1">
 							<tbody>
@@ -377,220 +360,197 @@ fieldset {
 									<th style="width: 100px;">收费金额</th>
 									<th>备注</th>
 								</tr>
-								<tr id="rowcharge">
+								<tr id="caseinfor">
 									<td id="rownum" style="text-align: center;">1</td>
 									<td><input id="chargeClass" class="easyui-validatebox"
 										name="casecharges[0].chargeClass"
-										data-options="required:true,validType:'length[0,30]'" />
-									</td>
+										data-options="required:true,validType:'length[0,30]'" /></td>
 									<td><input id="chargeStandardType"
 										class="easyui-validatebox"
 										name="casecharges[0].chargeStandardType"
-										data-options="required:true,validType:'length[0,10]'" />
-									</td>
+										data-options="required:true,validType:'length[0,10]'" /></td>
 									<td><input id="chargeAmount" class="easyui-validatebox"
-										name="casecharges[0].chargeAmount" value="0"  required="required"  />
-									</td>
+										name="casecharges[0].chargeAmount" value="0"
+										required="required" /></td>
 									<td><input id="chargeRemark" class="easyui-validatebox"
 										name="casecharges[0].chargeRemark"
-										data-options="validType:'length[0,50]'" />
-									</td>
+										data-options="validType:'length[0,50]'" /></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</fieldset>
-				</form>
-				<fieldset>
-					<legend>被鉴定人信息</legend>
-					<div class="fieldConten">
-						<div style="text-align: right; margin-right: 20px;">
-							<input class="ButtonCss" id="Button4" type="button" value="增加行"
-								onclick="addRow('CaseIdentifiedInfo')" /> <input class="ButtonCss"
-								id="Button7" type="button" value="删除最后行"
-								onclick="delRow('CaseIdentifiedInfo')" />
-						</div>
-						<table id="CaseIdentifiedInfo" class="table2" cellspacing="1" border="1">
-							<tbody>
-								<tr>
-									<th style="width: 40px;">编号</th>
-									<th style="width: 100px;">姓名</th>
-									<th style="width: 60px;">性别</th>
-									<th style="width: 150px;">证件号码</th>
-									<th style="width: 80px;">文化程度</th>
-									<th style="width: 100px;">民族</th>
-									<th style="width: 200px;">地址</th>
-									<th>备注</th>
-								</tr>
-								<tr style="text-align: center;" id="rowmember">
-									<td id="rownum">1</td>
-									<td><input id="name" class="easyui-validatebox"
-										name="CaseIdentifiedInfo.name"
-										data-options="required:true,validType:'length[0,50]'" />
-									</td>
-									<td><input id="sex" class="easyui-validatebox"
-										name="CaseIdentifiedInfo.sex"
-										data-options="required:true,validType:'length[0,5]'" />
-									</td>
-									<td><input id="idcard" " class="easyui-validatebox"
-										name="CaseIdentifiedInfo.idcard"
-										data-options="validType:'length[0,18]'" />
-									</td>
-									<td><input id="educatio" class="easyui-validatebox"
-										name="CaseIdentifiedInfo.education"
-										data-options="validType:'length[0,5]'" />
-									</td>
-									<td><input id="nation" class="easyui-validatebox"
-										name="CaseIdentifiedInfo.nation"
-										data-options="validType:'length[0,10]'" />
-									</td>
-									<td><input id="address" class="easyui-validatebox"
-										name="CaseIdentifiedInfo.address"
-										data-options="validType:'length[0,50]'" />
-									</td>
-									<td><input id="remark" class="easyui-validatebox"
-										name="CaseIdentifiedInfo.remark"
-										data-options="validType:'length[0,50]'" />
-									</td>
-								</tr>
-							</tbody>
-						</table>
+			</form>
+			<fieldset>
+				<legend>被鉴定人信息</legend>
+				<div class="fieldConten">
+					<div style="text-align: right; margin-right: 20px;">
+						<input class="ButtonCss" id="Button4" type="button" value="增加行"
+							onclick="addRow('CaseIdentifiedInfo')" /> <input
+							class="ButtonCss" id="Button7" type="button" value="删除最后行"
+							onclick="delRow('CaseIdentifiedInfo')" />
 					</div>
-				</fieldset>
-				<fieldset>
-					<legend>鉴定检材信息</legend>
-					<div class="fieldConten">
-						<div style=" text-align: right; margin-right: 20px;">
-							<input class="ButtonCss" type="button" value="增加行"
-								onclick="addtblTestThingRow()" /> <input class="ButtonCss"
-								type="button" value="删除最后行" onclick="delRow('tblTestThing')" />
-						</div>
-						<table id="tblTestThing" class="table2" cellspacing="1" border="1">
-							<tbody>
-								<tr>
-									<th style="width: 40px;">编号</th>
-									<th style="width: 200px;">名称</th>
-									<th style="width: 150px;">检材类别</th>
-									<th style="width: 40px;">数量</th>
-									<th style="width: 60px;">单位</th>
-									<th style="width: 100px;">提取日期</th>
-									<th style="width: 40px;">条形码</th>
-									<th>备注</th>
-								</tr>
-								<tr style="text-align: center;" id="rowTestThing">
-									<td id="rownum">1</td>
-									<td><input id="checkName" class="easyui-validatebox"
-										name="CaseCheckInfor.checkName"
-										data-options="required:true,validType:'length[0,20]'" />
-									</td>
-									<td><input id="checkClass" class="easyui-validatebox"
-										name="CaseCheckInfor.checkClass"
-										data-options="required:true,validType:'length[0,40]'" />
-									</td>
-									<td><input id="num" class="easyui-numberbox"
-										name="CaseCheckInfor.num" value="0" data-options="min:0" />
-									</td>
-									<td><input id="unit" class="easyui-validatebox"
-										name="CaseCheckInfor.unit"
-										data-options="required:true,validType:'length[0,5]'" />
-									</td>
-									<td><input id="getDate" class="easyui-datebox"
-										required="required" name="CaseCheckInfor.getDate" />
-									</td>
-									<td><input id="barcode" class="easyui-validatebox"
-										name="CaseCheckInfor.barcode"
-										data-options="validType:'length[0,15]'" />
-									</td>
-									<td><input id="remark" class="easyui-validatebox"
-										name="CaseCheckInfor.remark"
-										data-options="validType:'length[0,50]'" />
-									</td>
-								</tr>
-							</tbody>
-						</table>
+					<table id="CaseIdentifiedInfo" class="table2" cellspacing="1"
+						border="1">
+						<tbody>
+							<tr>
+								<th style="width: 40px;">编号</th>
+								<th style="width: 100px;">姓名</th>
+								<th style="width: 60px;">性别</th>
+								<th style="width: 150px;">证件号码</th>
+								<th style="width: 80px;">文化程度</th>
+								<th style="width: 100px;">民族</th>
+								<th style="width: 200px;">地址</th>
+								<th>备注</th>
+							</tr>
+							<tr style="text-align: center;" id="rowmember">
+								<td id="rownum">1</td>
+								<td><input id="name" class="easyui-validatebox"
+									name="CaseIdentifiedInfo.name"
+									data-options="required:true,validType:'length[0,50]'" /></td>
+								<td><input id="sex" class="easyui-validatebox"
+									name="CaseIdentifiedInfo.sex"
+									data-options="required:true,validType:'length[0,5]'" /></td>
+								<td><input id="idcard" " class="easyui-validatebox"
+									name="CaseIdentifiedInfo.idcard"
+									data-options="validType:'length[0,18]'" /></td>
+								<td><input id="educatio" class="easyui-validatebox"
+									name="CaseIdentifiedInfo.education"
+									data-options="validType:'length[0,5]'" /></td>
+								<td><input id="nation" class="easyui-validatebox"
+									name="CaseIdentifiedInfo.nation"
+									data-options="validType:'length[0,10]'" /></td>
+								<td><input id="address" class="easyui-validatebox"
+									name="CaseIdentifiedInfo.address"
+									data-options="validType:'length[0,50]'" /></td>
+								<td><input id="remark" class="easyui-validatebox"
+									name="CaseIdentifiedInfo.remark"
+									data-options="validType:'length[0,50]'" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>鉴定检材信息</legend>
+				<div class="fieldConten">
+					<div style=" text-align: right; margin-right: 20px;">
+						<input class="ButtonCss" type="button" value="增加行"
+							onclick="addtblTestThingRow()" /> <input class="ButtonCss"
+							type="button" value="删除最后行" onclick="delRow('tblTestThing')" />
 					</div>
-				</fieldset>
-				<fieldset>
-					<legend>内部统计</legend>
-					<div class="fieldConten">
-						<input name="" type="text" value="案件受理" id="" class="txt"
-							style="display: none;">
-						<table class="table1" border="1">
-							<tbody>
-								<tr>
-									<th>收款人</th>
-									<td><select id="payee" class="easyui-combobox"
-										name="CaseInternalStatistics.payee" style="width:136px">
+					<table id="tblTestThing" class="table2" cellspacing="1" border="1">
+						<tbody>
+							<tr>
+								<th style="width: 40px;">编号</th>
+								<th style="width: 200px;">名称</th>
+								<th style="width: 150px;">检材类别</th>
+								<th style="width: 40px;">数量</th>
+								<th style="width: 60px;">单位</th>
+								<th style="width: 100px;">提取日期</th>
+								<th style="width: 40px;">条形码</th>
+								<th>备注</th>
+							</tr>
+							<tr style="text-align: center;" id="rowTestThing">
+								<td id="rownum">1</td>
+								<td><input id="checkName" class="easyui-validatebox"
+									name="CaseCheckInfor.checkName"
+									data-options="required:true,validType:'length[0,20]'" /></td>
+								<td><input id="checkClass" class="easyui-validatebox"
+									name="CaseCheckInfor.checkClass"
+									data-options="required:true,validType:'length[0,40]'" /></td>
+								<td><input id="num" class="easyui-numberbox"
+									name="CaseCheckInfor.num" value="0" data-options="min:0" /></td>
+								<td><input id="unit" class="easyui-validatebox"
+									name="CaseCheckInfor.unit"
+									data-options="required:true,validType:'length[0,5]'" /></td>
+								<td><input id="getDate" class="easyui-datebox"
+									required="required" name="CaseCheckInfor.getDate" /></td>
+								<td><input id="barcode" class="easyui-validatebox"
+									name="CaseCheckInfor.barcode"
+									data-options="validType:'length[0,15]'" /></td>
+								<td><input id="remark" class="easyui-validatebox"
+									name="CaseCheckInfor.remark"
+									data-options="validType:'length[0,50]'" /></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>内部统计</legend>
+				<div class="fieldConten">
+					<input name="" type="text" value="案件受理" id="" class="txt"
+						style="display: none;">
+					<table class="table1" border="1">
+						<tbody>
+							<tr>
+								<th>收款人</th>
+								<td><select id="payee" class="easyui-combobox"
+									name="CaseInternalStatistics.payee" style="width:136px">
 
-									</select>
-									</td>
-									<th>鉴定助理</th>
-									<td><select id="identifyAssistant" class="easyui-combobox"
-										name="CaseInternalStatistics.identifyAssistant"
-										style="width:136px">
+								</select></td>
+								<th>鉴定助理</th>
+								<td><select id="identifyAssistant" class="easyui-combobox"
+									name="CaseInternalStatistics.identifyAssistant"
+									style="width:136px">
 
-									</select>
-									</td>
-									<th>鉴定人一</th>
-									<td><select id="appraiser1" class="easyui-combobox"
-										name="CaseInternalStatistics.appraiser1" style="width:136px" required="required" >
+								</select></td>
+								<th>鉴定人一</th>
+								<td><select id="appraiser1" class="easyui-combobox"
+									name="CaseInternalStatistics.appraiser1" style="width:136px"
+									required="required">
 
-									</select>
-									</td>
-									<th>鉴定人二</th>
-									<td><select id="appraiser2" class="easyui-combobox"
-										name="CaseInternalStatistics.appraiser2" style="width:136px">
+								</select></td>
+								<th>鉴定人二</th>
+								<td><select id="appraiser2" class="easyui-combobox"
+									name="CaseInternalStatistics.appraiser2" style="width:136px">
 
-									</select>
-									</td>
-								</tr>
-								<tr>
-									<th>签发人</th>
-									<td><select id="signer" class="easyui-combobox"
-										name="CaseInternalStatistics.signer" style="width:136px" required="required" >
+								</select></td>
+							</tr>
+							<tr>
+								<th>签发人</th>
+								<td><select id="signer" class="easyui-combobox"
+									name="CaseInternalStatistics.signer" style="width:136px"
+									required="required">
 
-									</select>
-									</td>
-								</tr>
-								<tr>
-									<th>来源渠道</th>
-									<td><select id="sources" class="easyui-combobox"
-										name="CaseInternalStatistics.sources" style="width:136px" required="required" >
+								</select></td>
+							</tr>
+							<tr>
+								<th>来源渠道</th>
+								<td><select id="sources" class="easyui-combobox"
+									name="CaseInternalStatistics.sources" style="width:136px"
+									required="required">
 
-									</select>
-									</td>
-									<th>业务维护</th>
-									<td><select id="operationMaintain" class="easyui-combobox"
-										name="CaseInternalStatistics.operationMaintain"
-										style="width:136px">
+								</select></td>
+								<th>业务维护</th>
+								<td><select id="operationMaintain" class="easyui-combobox"
+									name="CaseInternalStatistics.operationMaintain"
+									style="width:136px">
 
-									</select>
-									</td>
-									<th>VIP客户</th>
-									<td><select id="vip" class="easyui-combobox"
-										name="CaseInternalStatistics.vip" style="width:136px">
+								</select></td>
+								<th>VIP客户</th>
+								<td><select id="vip" class="easyui-combobox"
+									name="CaseInternalStatistics.vip" style="width:136px">
 
-									</select>
-									</td>
-									<th>业务归口</th>
-									<td><select id="operationsOwner" class="easyui-combobox"
-										name="CaseInternalStatistics.operationsOwner"
-										style="width:136px" required="required" >
+								</select></td>
+								<th>业务归口</th>
+								<td><select id="operationsOwner" class="easyui-combobox"
+									name="CaseInternalStatistics.operationsOwner"
+									style="width:136px" required="required">
 
-									</select>
-									</td>
-								</tr>
-								<tr>
-									<th>备注</th>
-									<td colspan="7"><textarea name="" rows="2" cols="20"
-											id="remark" name="CaseInternalStatistics.remark"
-											title="不超过200个字" style="width:100%;height:95px"></textarea>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</fieldset>
+								</select></td>
+							</tr>
+							<tr>
+								<th>备注</th>
+								<td colspan="7"><textarea name="" rows="2" cols="20"
+										id="remark" name="CaseInternalStatistics.remark"
+										title="不超过200个字" style="width:100%;height:95px"></textarea></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
 			<!-- </form> -->
 		</div>
 	</div>

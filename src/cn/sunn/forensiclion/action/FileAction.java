@@ -8,7 +8,8 @@ import java.util.List;
 import org.apache.struts2.ServletActionContext;
 
 import cn.sunn.forensiclion.action.base.FileBaseAction;
-import cn.sunn.forensiclion.domain.MFile;
+
+import cn.sunn.forensiclion.domain.Mfile;
 import cn.sunn.forensiclion.domain.User;
 
 public class FileAction extends FileBaseAction {
@@ -124,7 +125,7 @@ public class FileAction extends FileBaseAction {
 		// + chunk + " " + chunks);
 		if (chunk == chunks - 1) {
 			// 一个完整的文件上传完成
-			MFile mfile = new MFile();
+			Mfile mfile = new Mfile();
 			mfile.setData(filemgr.getBytesFromFile(dstFile));
 			mfile.setFilename(dstFile.getName());
 			mfile.setDatetime(new Date());
@@ -148,9 +149,9 @@ public class FileAction extends FileBaseAction {
 		// 每页的开始记录 第一页为1 第二页为number +1
 		int start = (intPage - 1) * number;
 
-		List<MFile> mfiles = filemgr.findByPage(start, number, "doctemplete");// 每页的数据，放入list 
+		List<Mfile> mfiles = filemgr.findByPage(start, number, "doctemplete");// 每页的数据，放入list 
 		for (int i = 0; i < mfiles.size(); i++) {
-			MFile mfile = mfiles.get(i);
+			Mfile mfile = mfiles.get(i);
 			mfile.setData(null);
 			mfiles.set(i, mfile);
 		}
@@ -173,7 +174,7 @@ public class FileAction extends FileBaseAction {
 	
 	public String editname() throws Exception{
 		System.out.println("------------------editname---------------------------");
-		MFile mfile = filemgr.listFile(id);
+		Mfile mfile = filemgr.listFile(id);
 		if (name != null){
 			mfile.setFilename(name);
 			filemgr.saveasDocTemplete(mfile);
@@ -193,7 +194,7 @@ public class FileAction extends FileBaseAction {
 	
 	public InputStream getInputStream() throws Exception  {
 		System.out.println(id.toString());
-        MFile mfile = filemgr.listFile(id);
+		Mfile mfile = filemgr.listFile(id);
 //        File outputFile ;
 //        String dstPath = ServletActionContext.getServletContext().getRealPath(
 //				"\\tmp")

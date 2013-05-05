@@ -1,0 +1,54 @@
+CREATE TABLE `user_function` (
+  `user_id` bigint(11) DEFAULT NULL COMMENT '用户ID',
+  `function_id` bigint(11) DEFAULT NULL COMMENT '功能ID',
+  KEY `FK5552CDCC8E447AF6` (`user_id`),
+  KEY `FK5552CDCC9A6F75D6` (`function_id`),
+  KEY `FK5552CDCCEC651B94` (`function_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `user` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `loginname` varchar(10) DEFAULT NULL COMMENT '登录名',
+  `passwd` varchar(20) DEFAULT NULL COMMENT '密码',
+  `name` varchar(30) DEFAULT NULL COMMENT '姓名',
+  `major` varchar(60) DEFAULT NULL COMMENT '专业',
+  `jobtitle` varchar(60) DEFAULT NULL COMMENT '职称',
+  `practice_num` varchar(30) DEFAULT NULL COMMENT '执业证号',
+  `remark` varchar(300) DEFAULT NULL COMMENT '备注',
+  `registdate` datetime DEFAULT NULL COMMENT '注册时间',
+  `logindate` datetime DEFAULT NULL COMMENT '上次登录时间',
+  `status` int(11) DEFAULT '1' COMMENT '状态 1为有效 0 为锁定',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `mfile` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `class` varchar(360) DEFAULT NULL COMMENT '文件归类',
+  `filename` varchar(360) DEFAULT NULL COMMENT '文件名',
+  `data` mediumblob COMMENT '数据',
+  `uploader` varchar(360) DEFAULT NULL COMMENT '上传人',
+  `datetime` datetime DEFAULT NULL COMMENT '上传时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='案件文件';
+
+
+CREATE TABLE `dictionary` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `parentid` bigint(11) NOT NULL COMMENT '父节点ID',
+  `name` varchar(100) NOT NULL COMMENT '节点名',
+  `code` varchar(100) NOT NULL COMMENT '节点代码',
+  `content` varchar(100) DEFAULT NULL COMMENT '内容',
+  `remark` varchar(300) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `usermanageHis` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user_id` bigint(11) NOT NULL COMMENT '用户姓名',
+  `opdate` datetime NOT NULL COMMENT '操作时间',
+  `opip` varchar(20) NOT NULL COMMENT '操作IP',
+  `opcd` varchar(30) NOT NULL COMMENT '操作类型',
+  `content` varchar(1200) NOT NULL COMMENT '操作内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

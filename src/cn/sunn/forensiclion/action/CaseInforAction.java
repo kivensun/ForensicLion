@@ -1,5 +1,7 @@
 package cn.sunn.forensiclion.action;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashSet;
@@ -13,6 +15,11 @@ import cn.sunn.forensiclion.domain.CaseInfor;
 import cn.sunn.forensiclion.domain.CaseInternalStatistics;
 
 public class CaseInforAction extends CaseInforBaseAction {
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = Logger
+			.getLogger(CaseInforAction.class);
 
 	/**
 	 * 
@@ -39,7 +46,7 @@ public class CaseInforAction extends CaseInforBaseAction {
 	
 
 	public List<CaseCharge> getCasecharges() {
-		return casecharges;
+	return casecharges;
 	}
 
 
@@ -77,14 +84,16 @@ public class CaseInforAction extends CaseInforBaseAction {
 			CaseInternalStatistics caseinternalstatistics) {
 		this.caseinternalstatistics = caseinternalstatistics;
 	}
-
-
 	public String newcase()throws Exception{
-		if (caseinfor != null){
+	if (caseinfor != null){
+		caseinfor.setCaseId("200404");
+		caseinfor.setCaseCharges(new HashSet( casecharges));
 			if (caseinformgr.saveCase(caseinfor) == 1){
 				this.getResult().put("result", "SUCCESS");
+				logger.info("SUCCESS");
 			}else{
 				this.getResult().put("result", "ERROR");
+				logger.info("ERROR");
 			}			
 		}else{
 			this.getResult().put("result", "ERROR");

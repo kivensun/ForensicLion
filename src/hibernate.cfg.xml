@@ -39,5 +39,16 @@
 			resource="cn/sunn/forensiclion/domain/CaseFile.hbm.xml" />
 		<mapping
 			resource="cn/sunn/forensiclion/domain/CaseInternalStatistics.hbm.xml" />
+		<mapping class="cn.sunn.forensiclion.domain.CaseCharge" />
+		<mapping class="cn.sunn.forensiclion.domain.CaseCheckInfor" />
+		<mapping class="cn.sunn.forensiclion.domain.CaseIdentifiedInfo" />
+		<mapping class="cn.sunn.forensiclion.domain.CaseInfor" />
+		<mapping class="cn.sunn.forensiclion.domain.CaseFile" />
+		<mapping
+			class="cn.sunn.forensiclion.domain.CaseInternalStatistics" />
+		<mapping class="cn.sunn.forensiclion.domain.Dictionary" />
+		<mapping class="cn.sunn.forensiclion.domain.UsermanageHis" />
+		<mapping class="cn.sunn.forensiclion.domain.User" />
+		<mapping class="cn.sunn.forensiclion.domain.Mfile" />
 	</session-factory>
 </hibernate-configuration>

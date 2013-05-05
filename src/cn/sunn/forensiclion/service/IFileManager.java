@@ -3,7 +3,8 @@ package cn.sunn.forensiclion.service;
 import java.io.File;
 import java.util.List;
 
-import cn.sunn.forensiclion.domain.MFile;
+import cn.sunn.forensiclion.domain.Mfile;
+
 
 
 public interface IFileManager {
@@ -17,21 +18,21 @@ public interface IFileManager {
 	 * 保存为文档模版
 	 * @return 
 	 */
-	public int saveasDocTemplete (MFile file);
+	public int saveasDocTemplete (Mfile file);
 	
 	/**
 	 * 保持案件图片
 	 * @param file
 	 * @return
 	 */
-	public int saveasCasePic(MFile file);
+	public int saveasCasePic(Mfile file);
 	
 	/**
 	 * 保持案件文档
 	 * @param file
 	 * @return
 	 */
-	public int saveasCaseDoc(MFile file);
+	public int saveasCaseDoc(Mfile file);
 	
 	/**
 	 * 删除文件
@@ -45,7 +46,7 @@ public interface IFileManager {
 	 * @param file
 	 * @return
 	 */
-	public int editFileName(MFile file);
+	public int editFileName(Mfile file);
 	
 	/**
 	 * 显示所有文档模版
@@ -59,7 +60,7 @@ public interface IFileManager {
 	 * @param id
 	 * @return
 	 */
-	public MFile listFile(Long id);
+	public Mfile listFile(Long id);
 	
 	/**
 	 * 显示所有案件图片

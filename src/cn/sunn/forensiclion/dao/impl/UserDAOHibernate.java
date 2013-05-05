@@ -50,13 +50,13 @@ public class UserDAOHibernate extends GenericHibernateDao<User, Long> implements
 			return ((User)(getHibernateTemplate().find(
 					"from User u where u.loginname = ?", 
 					user.getLoginname()).get(0)))
-					.getMyfuns();
+					.getDictionaries();
 		}
 		else
 		{
 			return(((User) (getHibernateTemplate().find(
 					"from User u where u.id = ?", user.getId())).get(0))
-					.getMyfuns());
+					.getDictionaries());
 		}
 		
 

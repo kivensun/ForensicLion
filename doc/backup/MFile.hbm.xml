@@ -3,29 +3,29 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2013-4-2 9:39:48 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="cn.sunn.forensiclion.domain.MFile" table="file" catalog="ForensicLion">
+    <class name="cn.sunn.forensiclion.domain.MFile" table="mfile" catalog="ForensicLion">
         <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
         </id>
         <property name="class_" type="string">
             <column name="class" length="360">
-                <comment>&#206;&#196;&#188;&#254;&#185;&#233;&#192;&#224;</comment>
+                <comment>文件归类</comment>
             </column>
         </property>
         <property name="filename" type="string">
             <column name="filename" length="360">
-                <comment>&#206;&#196;&#188;&#254;&#195;&#251;</comment>
+                <comment>文件名</comment>
             </column>
         </property>
         <property name="data" type="binary">
             <column name="data">
-                <comment>&#202;&#253;&#190;&#221;</comment>
+                <comment>数据</comment>
             </column>
         </property>
         <property name="datetime" type="timestamp">
             <column name="datetime" length="19">
-                <comment>&#201;&#207;&#180;&#171;&#202;&#177;&#188;&#228;</comment>
+                <comment>上传时间</comment>
             </column>
         </property>
     </class>

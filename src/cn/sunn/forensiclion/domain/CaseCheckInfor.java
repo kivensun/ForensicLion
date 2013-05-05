@@ -1,17 +1,29 @@
 package cn.sunn.forensiclion.domain;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * CaseCheckInfor entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "case_check_infor", catalog = "ForensicLion")
 public class CaseCheckInfor implements java.io.Serializable {
 
 	// Fields
 
-	private Long id;
-	private String caseId;
+	private long id;
+	private CaseInfor caseInfor;
 	private String checkName;
 	private String checkClass;
 	private Integer num;
@@ -27,10 +39,10 @@ public class CaseCheckInfor implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CaseCheckInfor(String caseId, String checkName, String checkClass,
-			Integer num, String unit, Date getDate, String barcode,
-			String remark) {
-		this.caseId = caseId;
+	public CaseCheckInfor(CaseInfor caseInfor, String checkName,
+			String checkClass, Integer num, String unit, Date getDate,
+			String barcode, String remark) {
+		this.caseInfor = caseInfor;
 		this.checkName = checkName;
 		this.checkClass = checkClass;
 		this.num = num;
@@ -41,23 +53,27 @@ public class CaseCheckInfor implements java.io.Serializable {
 	}
 
 	// Property accessors
-
-	public Long getId() {
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-
-	public String getCaseId() {
-		return this.caseId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "case_id")
+	public CaseInfor getCaseInfor() {
+		return this.caseInfor;
 	}
 
-	public void setCaseId(String caseId) {
-		this.caseId = caseId;
+	public void setCaseInfor(CaseInfor caseInfor) {
+		this.caseInfor = caseInfor;
 	}
 
+	@Column(name = "check_name", length = 360)
 	public String getCheckName() {
 		return this.checkName;
 	}
@@ -66,6 +82,7 @@ public class CaseCheckInfor implements java.io.Serializable {
 		this.checkName = checkName;
 	}
 
+	@Column(name = "check_class", length = 360)
 	public String getCheckClass() {
 		return this.checkClass;
 	}
@@ -74,6 +91,7 @@ public class CaseCheckInfor implements java.io.Serializable {
 		this.checkClass = checkClass;
 	}
 
+	@Column(name = "num")
 	public Integer getNum() {
 		return this.num;
 	}
@@ -82,6 +100,7 @@ public class CaseCheckInfor implements java.io.Serializable {
 		this.num = num;
 	}
 
+	@Column(name = "unit", length = 20)
 	public String getUnit() {
 		return this.unit;
 	}
@@ -89,7 +108,8 @@ public class CaseCheckInfor implements java.io.Serializable {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-
+	@Temporal(TemporalType.DATE)
+	@Column(name = "get_date", length = 10)
 	public Date getGetDate() {
 		return this.getDate;
 	}
@@ -98,6 +118,7 @@ public class CaseCheckInfor implements java.io.Serializable {
 		this.getDate = getDate;
 	}
 
+	@Column(name = "barcode", length = 300)
 	public String getBarcode() {
 		return this.barcode;
 	}
@@ -106,6 +127,7 @@ public class CaseCheckInfor implements java.io.Serializable {
 		this.barcode = barcode;
 	}
 
+	@Column(name = "remark", length = 300)
 	public String getRemark() {
 		return this.remark;
 	}

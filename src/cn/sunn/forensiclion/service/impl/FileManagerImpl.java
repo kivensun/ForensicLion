@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.List;
 
 import cn.sunn.forensiclion.dao.impl.FileDAOHibernate;
-import cn.sunn.forensiclion.domain.MFile;
+import cn.sunn.forensiclion.domain.Mfile;
 import cn.sunn.forensiclion.service.IFileManager;
 
 public class FileManagerImpl implements IFileManager {
@@ -57,7 +57,7 @@ public class FileManagerImpl implements IFileManager {
 		this.filedao = filedao;
 	}
 
-	public int saveasDocTemplete(MFile file) {
+	public int saveasDocTemplete(Mfile file) {
 		// TODO Auto-generated method stub
 
 		file.setClass_("doctemplete");
@@ -65,14 +65,14 @@ public class FileManagerImpl implements IFileManager {
 		return SUCCESS;
 	}
 
-	public int saveasCasePic(MFile file) {
+	public int saveasCasePic(Mfile file) {
 		// TODO Auto-generated method stub
 		file.setClass_("casepic");
 		filedao.saveOrUpdate(file);
 		return SUCCESS;
 	}
 
-	public int saveasCaseDoc(MFile file) {
+	public int saveasCaseDoc(Mfile file) {
 		// TODO Auto-generated method stub
 		file.setClass_("casedoc");
 		filedao.saveOrUpdate(file);
@@ -85,7 +85,7 @@ public class FileManagerImpl implements IFileManager {
 		return SUCCESS;
 	}
 
-	public int editFileName(MFile file) {
+	public int editFileName(Mfile file) {
 		// TODO Auto-generated method stub
 		filedao.saveOrUpdate(file);
 		return 0;
@@ -96,7 +96,7 @@ public class FileManagerImpl implements IFileManager {
 		return filedao.listDoctempletes();
 	}
 
-	public MFile listFile(Long id) {
+	public Mfile listFile(Long id) {
 		// TODO Auto-generated method stub
 		return filedao.get(id);
 	}
@@ -114,7 +114,7 @@ public class FileManagerImpl implements IFileManager {
 	public List findByPage(int offset, int pageSize,String Type) {
 		// TODO Auto-generated method stub
 		return filedao.findByPage(
-				" from MFile f where f.class_ = '" + Type +"'", offset,
+				" from Mfile f where f.class_ = '" + Type +"'", offset,
 				pageSize);
 	}
 
