@@ -8,6 +8,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -57,8 +60,7 @@ public class CaseInfor implements java.io.Serializable {
 	private Set<CaseIdentifiedInfo> caseIdentifiedInfos = new HashSet<CaseIdentifiedInfo>(
 			0);
 	private Set<CaseCharge> caseCharges = new HashSet<CaseCharge>(0);
-	private Set<CaseInternalStatistics> caseInternalStatisticses = new HashSet<CaseInternalStatistics>(
-			0);
+	private CaseInternalStatistics caseInternalStatisticses ;
 
 	// Constructors
 
@@ -85,7 +87,7 @@ public class CaseInfor implements java.io.Serializable {
 			Set<CaseFile> caseFiles,
 			Set<CaseIdentifiedInfo> caseIdentifiedInfos,
 			Set<CaseCharge> caseCharges,
-			Set<CaseInternalStatistics> caseInternalStatisticses) {
+			CaseInternalStatistics caseInternalStatisticses) {
 		this.caseId = caseId;
 		this.identifyMajor = identifyMajor;
 		this.entrustDate = entrustDate;
@@ -374,7 +376,8 @@ public class CaseInfor implements java.io.Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="case_id")
 	public Set<CaseCheckInfor> getCaseCheckInfors() {
 		return this.caseCheckInfors;
 	}
@@ -382,7 +385,8 @@ public class CaseInfor implements java.io.Serializable {
 	public void setCaseCheckInfors(Set<CaseCheckInfor> caseCheckInfors) {
 		this.caseCheckInfors = caseCheckInfors;
 	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="case_id")
 	public Set<CaseFile> getCaseFiles() {
 		return this.caseFiles;
 	}
@@ -390,7 +394,8 @@ public class CaseInfor implements java.io.Serializable {
 	public void setCaseFiles(Set<CaseFile> caseFiles) {
 		this.caseFiles = caseFiles;
 	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="case_id")
 	public Set<CaseIdentifiedInfo> getCaseIdentifiedInfos() {
 		return this.caseIdentifiedInfos;
 	}
@@ -399,7 +404,8 @@ public class CaseInfor implements java.io.Serializable {
 			Set<CaseIdentifiedInfo> caseIdentifiedInfos) {
 		this.caseIdentifiedInfos = caseIdentifiedInfos;
 	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name="case_id")
 	public Set<CaseCharge> getCaseCharges() {
 		return this.caseCharges;
 	}
@@ -407,13 +413,13 @@ public class CaseInfor implements java.io.Serializable {
 	public void setCaseCharges(Set<CaseCharge> caseCharges) {
 		this.caseCharges = caseCharges;
 	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "caseInfor")
-	public Set<CaseInternalStatistics> getCaseInternalStatisticses() {
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	public CaseInternalStatistics getCaseInternalStatisticses() {
 		return this.caseInternalStatisticses;
 	}
 
 	public void setCaseInternalStatisticses(
-			Set<CaseInternalStatistics> caseInternalStatisticses) {
+			CaseInternalStatistics caseInternalStatisticses) {
 		this.caseInternalStatisticses = caseInternalStatisticses;
 	}
 

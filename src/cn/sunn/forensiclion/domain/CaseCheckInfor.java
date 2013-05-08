@@ -23,7 +23,6 @@ public class CaseCheckInfor implements java.io.Serializable {
 	// Fields
 
 	private long id;
-	private CaseInfor caseInfor;
 	private String checkName;
 	private String checkClass;
 	private Integer num;
@@ -39,10 +38,9 @@ public class CaseCheckInfor implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CaseCheckInfor(CaseInfor caseInfor, String checkName,
+	public CaseCheckInfor(String checkName,
 			String checkClass, Integer num, String unit, Date getDate,
 			String barcode, String remark) {
-		this.caseInfor = caseInfor;
 		this.checkName = checkName;
 		this.checkClass = checkClass;
 		this.num = num;
@@ -62,15 +60,6 @@ public class CaseCheckInfor implements java.io.Serializable {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "case_id")
-	public CaseInfor getCaseInfor() {
-		return this.caseInfor;
-	}
-
-	public void setCaseInfor(CaseInfor caseInfor) {
-		this.caseInfor = caseInfor;
 	}
 
 	@Column(name = "check_name", length = 360)

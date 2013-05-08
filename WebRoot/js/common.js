@@ -148,7 +148,7 @@ function fillcombobox(id, text) {
 					return false;
 				}
 				str += '{';
-				str += '\"id\":\"' + now[i].code + '\",';
+				str += '\"id\":\"' + now[i].text + '\",';
 				str += '\"text\":\"' + now[i].code + '  ' + now[i].text +'\"';
 
 				if (i == now.length-1) {
@@ -171,4 +171,17 @@ function fillcombobox(id, text) {
 		},// ////
 		contentType : "application/json; charset=utf-8"
 	});
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function showSideMsg(title,msg,time){
+	$.messager.show({
+		title:title,
+		msg:msg,
+		timeout:time,
+		showType:'slide'
+	});
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function showAlertMsg(title,msg){
+	$.messager.alert(title,msg,'info');
 }

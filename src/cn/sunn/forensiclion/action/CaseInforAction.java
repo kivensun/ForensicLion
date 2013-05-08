@@ -86,8 +86,10 @@ public class CaseInforAction extends CaseInforBaseAction {
 	}
 	public String newcase()throws Exception{
 	if (caseinfor != null){
-		caseinfor.setCaseId("200404");
 		caseinfor.setCaseCharges(new HashSet( casecharges));
+		caseinfor.setCaseCheckInfors(new HashSet( casecheckinfors));
+		caseinfor.setCaseIdentifiedInfos(new HashSet(caseidentifiedinfos ));
+		caseinfor.setCaseInternalStatisticses(caseinternalstatistics);
 			if (caseinformgr.saveCase(caseinfor) == 1){
 				this.getResult().put("result", "SUCCESS");
 				logger.info("SUCCESS");

@@ -20,7 +20,6 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 	// Fields
 
 	private long id;
-	private CaseInfor caseInfor;
 	private String name;
 	private String sex;
 	private String idcard;
@@ -36,10 +35,10 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CaseIdentifiedInfo(CaseInfor caseInfor, String name, String sex,
+	public CaseIdentifiedInfo( String name, String sex,
 			String idcard, String education, String nation, String address,
 			String remark) {
-		this.caseInfor = caseInfor;
+	
 		this.name = name;
 		this.sex = sex;
 		this.idcard = idcard;
@@ -60,16 +59,7 @@ public class CaseIdentifiedInfo implements java.io.Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "case_id")
-	public CaseInfor getCaseInfor() {
-		return this.caseInfor;
-	}
-
-	public void setCaseInfor(CaseInfor caseInfor) {
-		this.caseInfor = caseInfor;
-	}
-
+	
 	@Column(name = "name", length = 30)
 	public String getName() {
 		return this.name;

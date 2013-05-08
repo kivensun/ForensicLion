@@ -20,7 +20,6 @@ public class CaseInternalStatistics implements java.io.Serializable {
 	// Fields
 
 	private long id;
-	private CaseInfor caseInfor;
 	private String payee;
 	private String identifyAssistant;
 	private String appraiser1;
@@ -39,11 +38,11 @@ public class CaseInternalStatistics implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CaseInternalStatistics(CaseInfor caseInfor, String payee,
+	public CaseInternalStatistics( String payee,
 			String identifyAssistant, String appraiser1, String appraiser2,
 			String signer, String sources, String operationMaintain,
 			String vip, String operationsOwner, String remark) {
-		this.caseInfor = caseInfor;
+		
 		this.payee = payee;
 		this.identifyAssistant = identifyAssistant;
 		this.appraiser1 = appraiser1;
@@ -67,16 +66,7 @@ public class CaseInternalStatistics implements java.io.Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "case_id")
-	public CaseInfor getCaseInfor() {
-		return this.caseInfor;
-	}
-
-	public void setCaseInfor(CaseInfor caseInfor) {
-		this.caseInfor = caseInfor;
-	}
-
+	
 	@Column(name = "payee", length = 100)
 	public String getPayee() {
 		return this.payee;

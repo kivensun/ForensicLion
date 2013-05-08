@@ -20,7 +20,6 @@ public class CaseCharge implements java.io.Serializable {
 	// Fields
 
 	private long chargeId;
-	private CaseInfor caseInfor;
 	private String chargeClass;
 	private String chargeStandardType;
 	private long chargeAmount;
@@ -33,9 +32,8 @@ public class CaseCharge implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public CaseCharge(CaseInfor caseInfor, String chargeClass,
-			String chargeStandardType, long chargeAmount, String chargeRemark) {
-		this.caseInfor = caseInfor;
+	public CaseCharge(String chargeClass,
+			String chargeStandardType, long chargeAmount, String chargeRemark) {	
 		this.chargeClass = chargeClass;
 		this.chargeStandardType = chargeStandardType;
 		this.chargeAmount = chargeAmount;
@@ -52,15 +50,6 @@ public class CaseCharge implements java.io.Serializable {
 
 	public void setChargeId(long chargeId) {
 		this.chargeId = chargeId;
-	}
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "case_id")
-	public CaseInfor getCaseInfor() {
-		return this.caseInfor;
-	}
-
-	public void setCaseInfor(CaseInfor caseInfor) {
-		this.caseInfor = caseInfor;
 	}
 
 	@Column(name = "charge_class", length = 100)
