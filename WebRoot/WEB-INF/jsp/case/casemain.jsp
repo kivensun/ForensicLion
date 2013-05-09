@@ -112,13 +112,13 @@
 			"menuname" : "案件管理",
 			"menus" : [ {
 				"menuname" : "案件受理",
-				"url" : "newcase"
+				"url" : "case_newcase"
 			}, {
 				"menuname" : "我的案件",
-				"url" : "editdic"
+				"url" : "case_editdic"
 			} , {
 				"menuname" : "案件查询",
-				"url" : "editdic"
+				"url" : "case_viewcase"
 			} ]
 		} ]
 	};

@@ -1,7 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="模版管理">
+<meta http-equiv="description" content="模版管理">
 <title>模版管理</title>
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
@@ -130,7 +144,7 @@ $(function(){
 							formatter : function(value, rowData, rowIndex) {
 								//function里面的三个参数代表当前字段值，当前行数据对象，行号（行号从0开始）
 								//alert(rowData.username);  							
-								return "<a href='listdoctemplete?id=" + value +"&type=doc' target='_blank'>查看</a>";
+								return "<a href='system_listdoctemplete?id=" + value +"&type=doc' target='_blank'>查看</a>";
 							}
 						}, {
 							field : 'filename',

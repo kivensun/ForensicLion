@@ -83,41 +83,47 @@
 			</result>
 		</action>
 
-		<action name="systemmgr">
-			<result>WEB-INF/jsp/system/systemmanage.jsp</result>
-		</action>
-		<action name="listusers">
-			<result>WEB-INF/jsp/system/listusers.jsp</result>
-		</action>
-		<action name="listdoctempletes">
-			<result>WEB-INF/jsp/system/listdoctempletes.html</result>
-		</action>
-		<action name="listdoctemplete">
-			<result>WEB-INF/jsp/system/listdoctemplete.jsp</result>
-		</action>
+<!-- 		<action name="systemmgr"> -->
+<!-- 			<result>WEB-INF/jsp/system/systemmanage.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="listusers"> -->
+<!-- 			<result>WEB-INF/jsp/system/listusers.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="listdoctempletes"> -->
+<!-- 			<result>WEB-INF/jsp/system/listdoctempletes.html</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="listdoctemplete"> -->
+<!-- 			<result>WEB-INF/jsp/system/listdoctemplete.jsp</result> -->
+<!-- 		</action> -->
 
-		<action name="edituser">
-			<result>WEB-INF/jsp/system/edituser.jsp</result>
-		</action>
-		<action name="adduser">
-			<result>WEB-INF/jsp/system/adduser.jsp</result>
-		</action>
-		<action name="editdic">
-			<result>WEB-INF/jsp/system/editdic.html</result>
-		</action>
-		<action name="uploader">
-			<result>WEB-INF/jsp/common/uploader.html</result>
-		</action>
+<!-- 		<action name="edituser"> -->
+<!-- 			<result>WEB-INF/jsp/system/edituser.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="adduser"> -->
+<!-- 			<result>WEB-INF/jsp/system/adduser.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="editdic"> -->
+<!-- 			<result>WEB-INF/jsp/system/editdic.html</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="uploader"> -->
+<!-- 			<result>WEB-INF/jsp/common/uploader.html</result> -->
+<!-- 		</action> -->
 
-		<action name="casemgr">
-			<result>WEB-INF/jsp/case/casemain.jsp</result>
-		</action>
-		<action name="newcase">
-			<result>WEB-INF/jsp/case/newcase.jsp</result>
-		</action>
+<!-- 		<action name="casemgr"> -->
+<!-- 			<result>WEB-INF/jsp/case/casemain.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="newcase"> -->
+<!-- 			<result>WEB-INF/jsp/case/newcase.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="caseread"> -->
+<!-- 			<result>WEB-INF/jsp/case/caseread.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="editdoc"> -->
+<!-- 			<result>WEB-INF/jsp/common/editdoc.jsp</result> -->
+<!-- 		</action> -->
 
-		<action name="editdoc">
-			<result>WEB-INF/jsp/common/editdoc.jsp</result>
+		<action name="*_*"> 
+ 			<result>WEB-INF/jsp/{1}/{2}.jsp</result> 
 		</action>
 		<action name="*">
 			<result>WEB-INF/jsp/{1}.jsp</result>

@@ -93,7 +93,7 @@ $(function(){
 								//function里面的三个参数代表当前字段值，当前行数据对象，行号（行号从0开始）
 								//alert(rowData.username);  							
 								return "<a onclick='addtab(\"" + rowData.name
-										+ "\",\"" + "edituser?id=" + value
+										+ "\",\"" + "system_edituser?id=" + value
 										+ "\")'"
 										+ "href='javascript:void(0);' >查看</a>";
 							}

@@ -112,13 +112,13 @@
 			"menuname" : "系统管理",
 			"menus" : [ {
 				"menuname" : "用户管理",
-				"url" : "listusers"
+				"url" : "system_listusers"
 			}, {
 				"menuname" : "字典管理",			
-				"url" : "editdic"
+				"url" : "system_editdic"
 			},{
 			"menuname":"文档模板管理",
-			"url":"listdoctempletes"
+			"url":"system_listdoctempletes"
 			}]
 		}, {
 			"menuid" : "8",

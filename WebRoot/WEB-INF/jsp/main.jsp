@@ -8,7 +8,7 @@
 <title>OK</title>
 </head>
 <body>
-	<a href="systemmgr">系统管理</a>
-	<a href="casemgr">案件管理</a>
+	<a href="system_systemmanage">系统管理</a>
+	<a href="case_casemain">案件管理</a>
 </body>
 </html>
